@@ -9,12 +9,21 @@
         <b-field label="年齢">
             <b-input v-model="age"></b-input>
         </b-field>
+        <b-button native-type="submit">
+            変更
+        </b-button>
     </form>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            bletag: 'BLETAG',
+            name: 'NAME',
+            age: 'AGE'
+        }
+    }
 }
 </script>
 

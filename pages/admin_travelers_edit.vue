@@ -1,5 +1,14 @@
 <template>
-  <admin_travelers_edit />
+    <section class="section">
+    <div class="columns is-centered">
+      <div class="column is-three-quarters">
+        <div class="box">
+          <admin_travelers_edit />
+        </div>
+      </div>
+    </div>
+  </section>
+  
 </template>
 
 <script>
