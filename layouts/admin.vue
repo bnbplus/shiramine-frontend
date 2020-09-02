@@ -39,7 +39,7 @@
               :to="item.to"
               exact-active-class="is-active"
             >
-              <b-icon :icon="item.icon" /> {{ item.title }}
+              {{ item.title }}
             </nuxt-link>
           </li>
         </ul>
@@ -58,23 +58,20 @@ export default {
     return {
       items: [
         {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
+          title: '旅人一覧',
+          to: { name: 'travelers' }
         },
         {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
+          title: '場所一覧',
+          to: { name: 'place_view' }
         },
         {
-            title: 'checklist',
-            icon: 'view-dashboard',
-            to: {name: 'checklist'}
+            title: '場所登録',
+            to: {name: 'place_add'}
         },
         {
-            title: 'table',
-            to : {name: 'adminTravellerView'}
+            title: '行動履歴',
+            to: {name: 'movement_history'}
         }
       ]
     }
