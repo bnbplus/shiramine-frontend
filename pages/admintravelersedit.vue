@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-three-quarters">
         <div class="box">
-          <admin_travelers_edit />
+          <admin-travelers-edit />
         </div>
       </div>
     </div>
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import Admin_travelers_edit from '@/components/organisms/admin_travelers_edit.vue'
+import AdminTravelersEdit from '@/components/organisms/AdminTravelersEdit.vue'
 
 export default {
     layout:'admin',
     components: {
-        Admin_travelers_edit,
+        AdminTravelersEdit,
     }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <form>
         <b-field label="BLEタグ">
-                <b-input v-model="bletag"></b-input>
+            <b-input v-model="bletag"></b-input>
         </b-field>
         <b-field label="名前">
             <b-input v-model="name"></b-input>
