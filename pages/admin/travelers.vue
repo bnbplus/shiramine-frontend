@@ -5,43 +5,36 @@
 <script>
 import AdminTravelersTable from '~/components/organisms/AdminTravelersTable.vue'
 
-
-
-var myData = [
-    { 'id': 1, 'name': 'Jesse', 'role': 'admin', 'mail': 'admin@gmail.com', 'bleToken': 'f2314g353wg'},
-    { 'id': 2, 'name': 'John', 'role': 'travelers', 'mail': 'test@user', 'bleToken': 'j45hh934f'}
-]
-var myColumns = [
-    {
-        field: 'id',
-        label: 'ID',
-    },
-    {
-        field: 'name',
-        label: '名前',
-    },
-    {
-        field: 'role',
-        label: '種類',
-    },
-    {
-        field: 'mail',
-        label: 'メール',
-    },
-    {
-        field: 'bleToken',
-        label: 'BLEトークン',
-    }
-]
-
-
-
 export default {
     layout:'admin',
     data() {
         return {
-            data: myData,
-            columns: myColumns
+            columns: [
+                { field: 'id', label: 'ID' },
+                { field: 'name', label: '名前' },
+                { field: 'role', label: '種類' },
+                { field: 'email', label: 'メール' },
+                { field: 'bleToken', label: 'BLEトークン' }
+            ]
+        }
+    },
+    async asyncData({ store, app, redirect }) {
+        if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
+        try {
+            const res = await app.$axios.$get('/users', {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
+            })
+            return {
+                data: res.records
+            }
+        } catch (err) {
+            console.log(err)
+            return {
+                data: []
+            }
         }
     },
     components:{
