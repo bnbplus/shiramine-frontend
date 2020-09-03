@@ -1,7 +1,7 @@
 <template>
     <section>
-        <info-view :title="titleName" :info="infoName"/>
-        <info-view :title="titleAge" :info="infoAge" />
+        <info-view :title="titleName" :info="name"/>
+        <info-view :title="titleAge" :info="age" />
     </section>
 </template>
 
@@ -9,12 +9,20 @@
 import InfoView from '~/components/molecules/InfoView.vue'
 
 export default {
+    props: {
+        name: {
+            type: String,
+            default: '匿名'
+        },
+        age: {
+            type: String,
+            default: '不詳'
+        },
+    },
     data() {
         return {
-            titleName: "名前",
-            infoName: "白峰太郎",
-            titleAge: "年齢",
-            infoAge: "22",
+            titleName: '名前',
+            titleAge: '年齢',
         }
     },
     components:{
