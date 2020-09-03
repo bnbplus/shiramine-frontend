@@ -1,9 +1,9 @@
 <template>
-  <section class="section">
+  <section class="section"> 
     <div class="columns is-centered">
       <div class="column is-three-quarters">
         <div class="box">
-          <admin-travelers-edit />
+          <travelers-edit />
         </div>
       </div>
     </div>
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import AdminTravelersEdit from '@/components/organisms/AdminTravelersEdit.vue'
+import TravelersEdit from '@/components/organisms/TravelersEdit.vue'
 
 export default {
-    layout:'admin',
+    layout:'travelers',
     components: {
-        AdminTravelersEdit,
+        TravelersEdit,
     }
 }
 </script>

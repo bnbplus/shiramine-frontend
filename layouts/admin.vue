@@ -46,7 +46,15 @@
       </aside>
 
       <div class="container column is-10">
-        <nuxt />
+        <section class="section">
+          <div class="columns is-centered">
+              <div class="column is-three-quarters">
+                  <div class="box">
+                    <nuxt />
+                  </div>
+              </div>
+          </div>
+        </section>
       </div>
     </section>
   </div>
@@ -59,19 +67,19 @@ export default {
       items: [
         {
           title: '旅人一覧',
-          to: { name: 'travelers' }
+          to: 'travelers'
         },
         {
           title: '場所一覧',
-          to: { name: 'place_view' }
+          to: 'place'
         },
         {
             title: '場所登録',
-            to: {name: 'place_add'}
+            to: 'placeadd'
         },
         {
             title: '行動履歴',
-            to: {name: 'movement_history'}
+            to: 'movementhistory'
         }
       ]
     }

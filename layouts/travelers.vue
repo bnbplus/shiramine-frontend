@@ -12,7 +12,7 @@
             <template slot="start">
                 <b-navbar-item>
                     <nuxt-link
-                    to="/travelersview"
+                    to="view"
                     exact-active-class="is-active"
                     >
                         My Page
@@ -20,7 +20,7 @@
                 </b-navbar-item>
                 <b-navbar-item>
                     <nuxt-link
-                    to="/travelersedit"
+                    to="edit"
                     exact-active-class="is-active"
                     >
                         Edit

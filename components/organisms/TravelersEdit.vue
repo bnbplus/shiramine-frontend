@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="sendData">
-        <b-field label="名前">
+        <b-field label="名前"> 
             <b-input v-model="name" ></b-input>
         </b-field>
         <b-field label="年齢">
@@ -16,8 +16,8 @@
 export default {
     data() {
         return {
-            name: '',
-            age: ''
+            name: 'Name',
+            age: 12
         }
     },
     methods: {
