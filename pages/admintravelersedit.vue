@@ -1,5 +1,5 @@
 <template>
-    <section class="section">
+  <section class="section">
     <div class="columns is-centered">
       <div class="column is-three-quarters">
         <div class="box">
