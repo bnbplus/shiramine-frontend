@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <travelers-view/>
+        <travelers-view :name="name" :age="age"/>
         <div style="margin-top:50px">
             <travelers-table :data="data" :columns="columns"> </travelers-table>
         </div>
@@ -39,6 +39,27 @@ export default {
             columns: myColumns
         }
     },
+    async asyncData({ store, app, redirect }) {
+        if ( !store.state.user.loginToken ) { return redirect('/') }
+        try {
+            const res = await app.$axios.$get('/user', {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
+            })
+            return {
+                name: res.record.name,
+                age: '不詳'
+            }
+        } catch (err) {
+            console.log(err)
+            return {
+                name: '不明',
+                age: '不詳'
+            }
+        }
+    }
 
 }
 </script>
