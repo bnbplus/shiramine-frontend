@@ -4,7 +4,7 @@
             <b-input v-model="name" ></b-input>
         </b-field>
         <b-field label="年齢">
-            <b-input v-model="age" type="number"></b-input>
+            <b-input v-model="age" ></b-input>
         </b-field>
         <b-button native-type="submit">
             変更
@@ -14,10 +14,15 @@
 
 <script>
 export default {
-    data() {
-        return {
-            name: 'Name',
-            age: 12
+    
+    props:{
+        name:{
+            type: String,
+            requiered: true
+        },
+        age:{
+            type: Number,
+            requiered: true
         }
     },
     methods: {
