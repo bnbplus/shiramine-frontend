@@ -28,13 +28,13 @@ export default {
             })
             return {
                 name: res.records.name,
-                age: "不詳"
+                age: 0
             }
         } catch (err) {
             console.log(err)
             return {
                 name: "不明",
-                age: "不詳"
+                age: 0
             }
         }
     },

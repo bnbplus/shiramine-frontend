@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="sendData">
+  <form>
         <b-field label="名前">
             <b-input v-model="name"></b-input>
         </b-field>
@@ -22,7 +22,24 @@
 
 <script>
 export default {
-
+    props:{
+        name:{
+            type: String,
+            requiered: true
+        },
+        bleuuid:{
+            type: String,
+            requiered: true
+        },
+        latitude:{
+            type: Number,
+            requiered: true
+        },
+        longitude:{
+            type: Number,
+            requiered: true
+        }
+    },
 }
 </script>
 

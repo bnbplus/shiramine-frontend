@@ -4,7 +4,7 @@
             <b-input v-model="name" ></b-input>
         </b-field>
         <b-field label="年齢">
-            <b-input v-model="age" ></b-input>
+            <b-input v-model="age" type="number"></b-input>
         </b-field>
         <b-button native-type="submit">
             変更
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-export default {
+export default { 
     
     props:{
         name:{
