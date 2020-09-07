@@ -32,10 +32,29 @@ export default {
 
     data() {
         return {
-            data: myData,
             columns: myColumns
         }
-    }
+    },
+
+    async asyncData({ store, app, redirect }) {
+        // if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
+        try {
+            const res = await app.$axios.$get('/shops', {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
+            })
+            return {
+                data: res.records
+            }
+        } catch (err) {
+            console.log(err)
+            return {
+                data: myData
+            }
+        }
+    },
 }
 </script>
 

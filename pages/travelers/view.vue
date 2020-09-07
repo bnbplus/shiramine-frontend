@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <travelers-view :name="name" :age="age"/>
+        <travelers-view :name="name" :age="age" :request="request"/>
         <div style="margin-top:50px">
             <travelers-table :data="data" :columns="columns"> </travelers-table>
         </div>
@@ -50,13 +50,15 @@ export default {
             })
             return {
                 name: res.record.name,
-                age: '不詳'
+                age: '不詳',
+                request: '不明' 
             }
         } catch (err) {
             console.log(err)
             return {
                 name: '不明',
-                age: '不詳'
+                age: '不詳',
+                request: '不明'
             }
         }
     }

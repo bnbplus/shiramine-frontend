@@ -2,6 +2,8 @@
     <section>
         <info-view :title="titleName" :info="name"/>
         <info-view :title="titleAge" :info="age" />
+        <info-view :title="titleRequest" :info="request" />
+        
     </section>
 </template>
 
@@ -18,11 +20,16 @@ export default {
             type: String,
             default: '不詳'
         },
+        request:　{
+            type: String,
+            default: '不詳'
+        },
     },
     data() {
         return {
             titleName: '名前',
             titleAge: '年齢',
+            titleRequest: '頼みごと'
         }
     },
     components:{

@@ -6,6 +6,9 @@
         <b-field label="年齢">
             <b-input v-model="age" type="number"></b-input>
         </b-field>
+        <b-field label="頼みごと">
+            <b-input v-model="request" type="number"></b-input>
+        </b-field>
         <b-button native-type="submit">
             変更
         </b-button>
@@ -22,6 +25,10 @@ export default {
         },
         age:{
             type: Number,
+            requiered: true
+        },
+        request:{
+            type: String,
             requiered: true
         }
     },
