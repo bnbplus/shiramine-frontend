@@ -4,7 +4,7 @@
             <b-input v-model="name"></b-input>
         </b-field>
         <b-field label="BLE UUID">
-            <b-input v-model="bleuuid"></b-input>
+            <b-input v-model="gatewayId"></b-input>
         </b-field>
         <b-field label="緯度">
             <b-input v-model="latitude" type="number"></b-input>
@@ -27,7 +27,7 @@ export default {
             type: String,
             requiered: true
         },
-        bleuuid:{
+        gatewayId:{
             type: String,
             requiered: true
         },

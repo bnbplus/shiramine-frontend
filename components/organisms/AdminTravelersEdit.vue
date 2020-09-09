@@ -7,7 +7,7 @@
             <b-input v-model="bletag"></b-input>
         </b-field>
         <b-field label="種類"> 
-            <b-input v-model="request"></b-input>
+            <b-input v-model="role"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
@@ -24,11 +24,11 @@ export default {
             type: String,
             default: '',
         },
-        age: {
+        bletag: {
             type: String,
             default: ''
         },
-        bletag: {
+        role: {
             type: String,
             default: ''
         }

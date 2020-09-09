@@ -6,11 +6,11 @@
 import AdminPlaceTable from '~/components/organisms/AdminPlaceTable.vue'
 
 var myData = [
-    { 'id': 1, 'name': 'Jesse', 'bleId': '125231', 'latitude': 1233235, 'longitude': 1233237 },
-    { 'id': 2, 'name': 'John', 'bleId': '246346', 'latitude': 1233233, 'longitude': 1233233 },
-    { 'id': 3, 'name': 'Tina', 'bleId': '84564', 'latitude': 1233236, 'longitude': 1111111 },
-    { 'id': 4, 'name': 'Clarence', 'bleId': '1251', 'latitude': 1233231, 'longitude': 12342352 },
-    { 'id': 5, 'name': 'Anne', 'bleId': '373543', 'latitude': 1233230, 'longitude': 72351 }
+    { 'id': 1, 'name': 'Jesse', 'gatewayId': '125231', 'latitude': 1233235, 'longitude': 1233237 },
+    { 'id': 2, 'name': 'John', 'gatewayId': '246346', 'latitude': 1233233, 'longitude': 1233233 },
+    { 'id': 3, 'name': 'Tina', 'gatewayId': '84564', 'latitude': 1233236, 'longitude': 1111111 },
+    { 'id': 4, 'name': 'Clarence', 'gatewayId': '1251', 'latitude': 1233231, 'longitude': 12342352 },
+    { 'id': 5, 'name': 'Anne', 'gatewayId': '373543', 'latitude': 1233230, 'longitude': 72351 }
 ]
 
 export default {
