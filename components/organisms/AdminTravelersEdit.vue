@@ -19,11 +19,18 @@
 
 <script>
 export default {
-    data() {
-        return {
-            bletag: 'BLETAG',
-            name: 'NAME',
-            age: 34
+    props: {
+        name: {
+            type: String,
+            default: '',
+        },
+        age: {
+            type: String,
+            default: ''
+        },
+        bletag: {
+            type: String,
+            default: ''
         }
     },
     methods: {
