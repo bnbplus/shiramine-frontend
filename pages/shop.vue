@@ -8,11 +8,12 @@
 import Shop from '~/components/organisms/Shop.vue'
 
 var myData = [
-    { 'name': '白峰太郎', 'age': "46"},
-    { 'name': '金沢二郎', 'age': "21"},
-    { 'name': '白峰太郎', 'age': "46"},
-    { 'name': '金沢二郎', 'age': "21"}
+    { 'name': '白峰太郎', 'age': "46", 'request:': "草むしり"},
+    { 'name': '金沢二郎', 'age': "21", 'request:': "掃除"},
+    { 'name': '白峰太郎', 'age': "46", 'request:': "片付け"},
+    { 'name': '金沢二郎', 'age': "21", 'request:': "草むしり"}
 ]
+
 var myColumns = [
     {
         field: 'name',
@@ -21,6 +22,10 @@ var myColumns = [
     {
         field: 'age',
         label: '年齢',
+    },
+    {
+        field: 'request',
+        label: '頼みごと'
     }
 ]
 
@@ -46,7 +51,7 @@ export default {
                 }
             })
             return {
-                data: res.records
+                data: myData //res.records
             }
         } catch (err) {
             console.log(err)

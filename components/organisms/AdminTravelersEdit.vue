@@ -1,13 +1,13 @@
 <template>
     <form @submit.prevent="sendData">
-        <b-field label="BLEタグ">
-            <b-input v-model="bletag"></b-input>
-        </b-field>
         <b-field label="名前">
             <b-input v-model="name"></b-input>
         </b-field>
-        <b-field label="年齢">
-            <b-input v-model="age" type="number"></b-input>
+        <b-field label="BLEタグ">
+            <b-input v-model="bletag"></b-input>
+        </b-field>
+        <b-field label="種類"> 
+            <b-input v-model="request"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
