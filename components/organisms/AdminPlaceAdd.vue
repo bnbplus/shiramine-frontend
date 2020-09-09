@@ -15,6 +15,9 @@
         <b-field label="経度">
             <b-input v-model="longitude" type="number"></b-input>
         </b-field>
+        <b-field label="説明">
+            <b-input v-model="longitude" maxlength="200" type="textarea"></b-input>
+        </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
                 登録

@@ -17,7 +17,7 @@ export default {
                 { field: 'role', label: '種類' },
                 { field: 'email', label: 'メール' },
                 { field: 'request', label: '頼みごと'},
-                { field: 'bleToken', label: 'BLEトークン' }
+                { field: 'bleToken', label: 'BLEトークン' },
             ]
         }
     },
