@@ -67,19 +67,19 @@ export default {
       items: [
         {
           title: '旅人一覧',
-          to: 'travelers'
+          to: '/admin/travelers'
         },
         {
           title: '場所一覧',
-          to: 'place'
+          to: '/admin/place'
         },
         {
             title: '場所登録',
-            to: 'placeadd'
+            to: '/admin/placeadd'
         },
         {
             title: '行動履歴',
-            to: 'movementhistory'
+            to: '/admin/movementhistory'
         }
       ]
     }

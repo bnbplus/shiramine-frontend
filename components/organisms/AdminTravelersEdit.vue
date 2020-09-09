@@ -19,18 +19,18 @@
 
 <script>
 export default {
-    props:{
-        name:{
+    props: {
+        name: {
             type: String,
-            requiered: true
+            default: '',
         },
-        bletag:{
+        age: {
             type: String,
-            requiered: true
+            default: ''
         },
-        request:{
+        bletag: {
             type: String,
-            requiered: true
+            default: ''
         }
     },
     methods: {
