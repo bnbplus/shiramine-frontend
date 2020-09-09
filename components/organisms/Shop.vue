@@ -13,8 +13,8 @@
                             <template slot-scope="p">
                                 <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.name }}</b-table-column>
                                 <b-table-column :field="columns[1].field" :label="columns[1].label">{{ p.row.age }}</b-table-column>
-                                <b-button tag="router-link" to="/" type="is-link"> ○ </b-button>
-                                <b-button tag="router-link" to="/" type="is-link"> × </b-button>
+                                <b-table-column :field="columns[2].field" :label="columns[2].label">{{ p.row.request }}</b-table-column>
+                                <b-button tag="router-link" to="/" type="is-link"> 退出 </b-button>
                             </template>
 
                             </b-table>

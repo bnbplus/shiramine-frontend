@@ -7,7 +7,7 @@
             <b-input v-model="age" type="number"></b-input>
         </b-field>
         <b-field label="頼みごと">
-            <b-input v-model="request" type="number"></b-input>
+            <b-input v-model="request"></b-input>
         </b-field>
         <b-button native-type="submit">
             変更

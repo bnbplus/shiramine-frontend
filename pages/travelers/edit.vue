@@ -3,8 +3,8 @@
     <div class="columns is-centered">
       <div class="column is-three-quarters">
         <div class="box">
-          <travelers-edit :name="name" :age="age"/>
-        </div>
+          <travelers-edit :name="name" :age="age" :request="request"/>
+        </div> 
       </div>
     </div>
   </section>
@@ -27,14 +27,16 @@ export default {
                 }
             })
             return {
-                name: res.records.name,
-                age: 0
+                name: res.record.name,
+                age: 0,
+                request: ""
             }
         } catch (err) {
             console.log(err)
             return {
                 name: "不明",
-                age: 0
+                age: 0,
+                request: "不明"
             }
         }
     },

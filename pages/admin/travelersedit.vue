@@ -1,10 +1,10 @@
 <template>
-  <admin-travelers-edit/>
+  <admin-travelers-edit :name="name" :bletag="bletag" :request="request" />
 </template>
 
 <script>
 import AdminTravelersEdit from '@/components/organisms/AdminTravelersEdit.vue'
-export default {
+export default { 
     layout:'admin',
 
     async asyncData({ store, app, redirect }) {
@@ -15,10 +15,11 @@ export default {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken
                 }
-            })
+            }) 
             return {
                 name: res.records.name,
-                age: "不詳"
+                bletag: "不明",
+                request: "不明"
             }
         } catch (err) {
             console.log(err)
