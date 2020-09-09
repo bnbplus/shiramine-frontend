@@ -3,7 +3,6 @@
         <b-table
             :data="data"
             :debounce-search="1000"
-            
         >
         <template slot-scope="p">
             <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.id }}</b-table-column>

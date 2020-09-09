@@ -5,11 +5,6 @@
 <script>
 import AdminTravelersTable from '~/components/organisms/AdminTravelersTable.vue'
 
-var myData = [
-    { 'id': 1, 'name': '白峰太郎', 'role': "traveler", 'email': "test@test" ,'request:': "草むしり", 'bleToken': '36135411'},
-    { 'id': 2, 'name': '金沢二郎', 'role': "admin", 'email': "test1@test" ,'request:': "掃除", 'bleToken': '613527231'},
-    { 'id': 3, 'name': '石川三郎', 'role': "traveler", 'email': "test2@test" ,'request:': "皿洗い", 'bleToken': 'hb242j131'},
-]
 
 export default {
     layout:'admin',
@@ -36,12 +31,12 @@ export default {
                 }
             })
             return {
-                data: myData//res.records
+                data: res.records
             }
         } catch (err) {
             console.log(err)
             return {
-                data: myData
+                data: []
             }
         }
     },

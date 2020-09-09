@@ -1,5 +1,5 @@
 <template>
-  <admin-travelers-edit :name="name" :bletag="bletag" :role="role"/>
+  <travelers-edit :name="name" :age="''" :request="request"/>
 </template>
 
 <script>
@@ -21,15 +21,13 @@ export default {
         console.log(res);
         return {
           name: res.record.name,
-          bletag: res.record.bleToken,
-          role: res.record.role
         }
       } catch (err) {
         console.log(err)
         return {
           name: '',
-          bletag: '',
-          role: ''
+          age: '',
+          request: ''
         }
       }
     }
