@@ -1,7 +1,7 @@
 <template>
     <section>
         <info-view :title="titleName" :info="name"/>
-        <info-view :title="titleAge" :info="age" />
+        <info-view :title="titleEmail" :info="email" />
         <info-view :title="titleRequest" :info="request" />
         
     </section>
@@ -16,7 +16,7 @@ export default {
             type: String,
             default: '匿名'
         },
-        age: {
+        email: {
             type: String,
             default: '不詳'
         },
@@ -28,7 +28,7 @@ export default {
     data() {
         return {
             titleName: '名前',
-            titleAge: '年齢',
+            titleEmail: 'メールアドレス',
             titleRequest: '頼みごと'
         }
     },

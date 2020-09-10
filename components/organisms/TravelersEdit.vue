@@ -3,8 +3,8 @@
         <b-field label="名前"> 
             <b-input v-model="name" ></b-input>
         </b-field>
-        <b-field label="年齢">
-            <b-input v-model="age" type="number"></b-input>
+        <b-field label="メールアドレス">
+            <b-input v-model="email" type="number"></b-input>
         </b-field>
         <b-field label="頼みごと">
             <b-input v-model="request"></b-input>
@@ -37,7 +37,6 @@ export default {
     methods: {
         sendData() {
             console.log(this.name, this.age);
-            
         }
     }
 }

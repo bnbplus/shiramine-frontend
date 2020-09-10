@@ -1,5 +1,5 @@
 <template>
-  <travelers-edit :name="name" :age="''" :request="request"/>
+  <travelers-edit :name="name" :email="email" :request="request"/>
 </template>
 
 <script>
@@ -21,12 +21,13 @@ export default {
         console.log(res);
         return {
           name: res.record.name,
+          email: res.record.email
         }
       } catch (err) {
         console.log(err)
         return {
           name: '',
-          age: '',
+          email: '',
           request: ''
         }
       }

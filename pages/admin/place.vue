@@ -6,11 +6,11 @@
 import AdminPlaceTable from '~/components/organisms/AdminPlaceTable.vue'
 
 var myData = [
-    { 'id': 1, 'name': 'Jesse', 'gatewayId': '125231', 'latitude': 1233235, 'longitude': 1233237, 'info': 'カフェ' },
-    { 'id': 2, 'name': 'John', 'gatewayId': '246346', 'latitude': 1233233, 'longitude': 1233233, 'info': '駄菓子屋' },
-    { 'id': 3, 'name': 'Tina', 'gatewayId': '84564', 'latitude': 1233236, 'longitude': 1111111, 'info': '温泉' },
-    { 'id': 4, 'name': 'Clarence', 'gatewayId': '1251', 'latitude': 1233231, 'longitude': 12342352, 'info': 'カフェ' },
-    { 'id': 5, 'name': 'Anne', 'gatewayId': '373543', 'latitude': 1233230, 'longitude': 72351, 'info': '飯屋' }
+    { 'id': 1, 'name': 'Jesse', 'gatewayId': '125231', 'latitude': 1233235, 'longitude': 1233237, 'information': 'カフェ' },
+    { 'id': 2, 'name': 'John', 'gatewayId': '246346', 'latitude': 1233233, 'longitude': 1233233, 'information': '駄菓子屋' },
+    { 'id': 3, 'name': 'Tina', 'gatewayId': '84564', 'latitude': 1233236, 'longitude': 1111111, 'information': '温泉' },
+    { 'id': 4, 'name': 'Clarence', 'gatewayId': '1251', 'latitude': 1233231, 'longitude': 12342352, 'information': 'カフェ' },
+    { 'id': 5, 'name': 'Anne', 'gatewayId': '373543', 'latitude': 1233230, 'longitude': 72351, 'information': '飯屋' }
 ]
 
 export default {
@@ -43,7 +43,7 @@ export default {
                     label: '経度',
                 },
                 {
-                    field: 'info',
+                    field: 'information',
                     label: '説明',
                 }
             ],
