@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="editPlace">
         <b-field label="名前">
             <b-input v-model="name"></b-input>
         </b-field>
@@ -25,6 +25,23 @@
 
 <script>
 export default {
+    async editPlace () {
+        try {
+            const back = await this.$axios.post(`/spot/edit/${this.id}`, {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                },
+                name: this.name,
+                bleuuid: this.bleuuid,
+                latitude: this.latitude,
+                longitude: this.longitude,
+                description: this.description
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    },
     props:{
         name:{
             type: String,
