@@ -24,7 +24,7 @@ export default {
                 name: res.records.name,
                 bleuuid: res.records.bleuuid,
                 latitude: res.records.latitude,
-                longitude: res.records.longitude
+                longitude: res.records.longitude,
             }
         } catch (err) {
             console.log(err)

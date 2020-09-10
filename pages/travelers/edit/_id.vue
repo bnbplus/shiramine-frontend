@@ -1,11 +1,11 @@
 <template>
-  <travelers-edit :name="name" :email="email" :request="request"/>
+  <travelers-edit :id="id" :name="name" :email="email" :request="request" />
 </template>
 
 <script>
 import AdminTravelersEdit from '@/components/organisms/AdminTravelersEdit.vue'
 export default {
-    layout:'admin',
+    layout:'travelers',
     components: {
         AdminTravelersEdit,
     },
@@ -20,15 +20,16 @@ export default {
         })
         console.log(res);
         return {
+          id: params.id,
           name: res.record.name,
           email: res.record.email
         }
       } catch (err) {
         console.log(err)
         return {
+          id: '',
           name: '',
           email: '',
-          request: ''
         }
       }
     }
