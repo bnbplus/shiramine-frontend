@@ -1,5 +1,5 @@
 <template>
-  <admin-place-edit :name="name" :bleuuid="bleuuid" :latitude="latitude" :longitude="longitude"/>
+  <admin-place-edit :name="name" :bleuuid="bleuuid" :latitude="latitude" :longitude="longitude" :description="description"/>
 </template>
 
 <script>
@@ -11,20 +11,22 @@ export default {
       AdminPlaceEdit,
   },
 
-  async asyncData({ store, app, redirect }) {
+  async asyncData({ store, app, redirect, params }) {
         if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
         try {
-            const res = await app.$axios.$get('/spot', {
+            const res = await app.$axios.$get(`/spot/${params.id}`, {
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken
                 }
             })
+            console.log(res.record)
             return {
-                name: res.records.name,
-                bleuuid: res.records.bleuuid,
-                latitude: res.records.latitude,
-                longitude: res.records.longitude,
+                name: res.record.name,
+                bleuuid: res.record.bleuuid,
+                latitude: res.record.latitude,
+                longitude: res.record.longitude,
+                description: res.record.description
             }
         } catch (err) {
             console.log(err)
@@ -32,7 +34,8 @@ export default {
                 name: "不明",
                 bleuuid: "不明",
                 latitude: 0,
-                longitude: 0
+                longitude: 0,
+                description: "不明"
             }
         }
     }

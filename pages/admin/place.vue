@@ -12,7 +12,6 @@ export default {
     },
     data() {
         return {
-            data: myData,
             columns: [
                 {
                     field: 'id',
@@ -23,8 +22,12 @@ export default {
                     label: '名前',
                 },
                 {
-                    field: 'gatewayId',
+                    field: 'bleUuid',
                     label: 'BLE UUID',
+                },
+                {
+                    field: 'bnbSub',
+                    label: 'BLE+のsub',
                 },
                 {
                     field: 'latitude',
@@ -35,7 +38,7 @@ export default {
                     label: '経度',
                 },
                 {
-                    field: 'information',
+                    field: 'description',
                     label: '説明',
                 }
             ],
