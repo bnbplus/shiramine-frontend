@@ -2,8 +2,6 @@
     <section>
         <info-view :title="titleName" :info="name"/>
         <info-view :title="titleEmail" :info="email" />
-        <info-view :title="titleRequest" :info="request" />
-        
     </section>
 </template>
 
@@ -19,17 +17,12 @@ export default {
         email: {
             type: String,
             default: '不詳'
-        },
-        request:　{
-            type: String,
-            default: '不詳'
-        },
+        }
     },
     data() {
         return {
             titleName: '名前',
-            titleEmail: 'メールアドレス',
-            titleRequest: '頼みごと'
+            titleEmail: 'メールアドレス'
         }
     },
     components:{

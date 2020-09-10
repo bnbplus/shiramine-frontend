@@ -1,13 +1,13 @@
 <template>
-    <form @submit.prevent="sendData">
+    <form @submit.prevent="editUser">
         <b-field label="名前">
-            <b-input v-model="name"></b-input>
-        </b-field>
-        <b-field label="BLEタグ">
-            <b-input v-model="bletag"></b-input>
+            <b-input v-model="formName"></b-input>
         </b-field>
         <b-field label="種類"> 
-            <b-input v-model="role"></b-input>
+            <b-input v-model="formRole"></b-input>
+        </b-field>
+        <b-field label="BLEタグ">
+            <b-input v-model="formBletag"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
@@ -19,7 +19,23 @@
 
 <script>
 export default {
+    data() {
+        return {
+            formName: null,
+            formRole: null,
+            formBletag: null
+        }
+    },
+    mounted() {
+        this.formName = this.name
+        this.formRole = this.role
+        this.formBletag = this.bletag
+    },
     props: {
+        id:{
+            type: Number,
+            default:''
+        },
         name: {
             type: String,
             default: '',
@@ -34,11 +50,24 @@ export default {
         }
     },
     methods: {
-        sendData() {
-            console.log(this.name, this.age);
-            
-        }
-    }
+        async editUser () {
+            try {
+                const back = await this.$axios.$post(`/user/edit/${this.id}`, {
+                    name: this.formName,
+                    role: this.formRole,
+                    bletag: this.formBletag
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        Authorization: this.$store.state.user.loginToken
+                    },
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        },
+    },
+    
 }
 </script>
 

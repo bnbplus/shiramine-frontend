@@ -1,5 +1,5 @@
 <template>
-  <admin-place-edit :name="name" :bleuuid="bleuuid" :latitude="latitude" :longitude="longitude" :description="description"/>
+  <admin-place-edit :name="name" :bleuuid="bleuuid" :latitude="latitude" :longitude="longitude" :description="description" :id="id"/>
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
             })
             console.log(res.record)
             return {
+                id: res.record.id,
                 name: res.record.name,
                 bleuuid: res.record.bleuuid,
                 latitude: res.record.latitude,
@@ -31,6 +32,7 @@ export default {
         } catch (err) {
             console.log(err)
             return {
+                id: 0,
                 name: "不明",
                 bleuuid: "不明",
                 latitude: 0,

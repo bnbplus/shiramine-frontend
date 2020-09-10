@@ -1,23 +1,23 @@
 <template>
   <form @submit.prevent="editPlace">
         <b-field label="名前">
-            <b-input v-model="name"></b-input>
+            <b-input v-model="formName"></b-input>
         </b-field>
         <b-field label="BLE UUID">
-            <b-input v-model="bleuuid"></b-input>
+            <b-input v-model="formBleuuid"></b-input>
         </b-field>
         <b-field label="緯度">
-            <b-input v-model="latitude" type="number"></b-input>
+            <b-input v-model="formLatitude"></b-input>
         </b-field>
         <b-field label="経度">
-            <b-input v-model="longitude" type="number"></b-input>
+            <b-input v-model="formLongitude"></b-input>
         </b-field>
         <b-field label="説明">
-            <b-input v-model="description"></b-input>
+            <b-input v-model="formDescription"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
-                登録
+                変更
             </b-button>
         </div>
     </form>
@@ -25,25 +25,48 @@
 
 <script>
 export default {
-    async editPlace () {
-        try {
-            const back = await this.$axios.post(`/spot/edit/${this.id}`, {
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8',
-                    Authorization: store.state.user.loginToken
-                },
-                name: this.name,
-                bleuuid: this.bleuuid,
-                latitude: this.latitude,
-                longitude: this.longitude,
-                description: this.description
-            })
-        } catch (err) {
-            console.log(err);
+    data() {
+        return {
+            formName: null,
+            formBleuuid: null,
+            formLatitude: null,
+            formLongitude: null,
+            formDescription: null
         }
+    },
+    mounted() {
+        this.formName = this.name
+        this.formBleuuid = this.bleuuid
+        this.formLatitude = this.latitude
+        this.formLongitude = this.longitude
+        this.formDescription = this.description
+    },
+    methods: {
+        async editPlace () {
+            try {
+                const back = await this.$axios.$post(`/spot/edit/${this.id}`, {
+                    name: this.formName,
+                    bleUuid: this.formBleuuid,
+                    latitude: this.formLatitude,
+                    longitude: this.formLongitude,
+                    description: this.formDescription
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        Authorization: this.$store.state.user.loginToken
+                    },
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        },
     },
     
     props:{
+        id:{
+            type: Number,
+            requiered:true
+        },
         name:{
             type: String,
             requiered: true
