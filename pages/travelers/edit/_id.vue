@@ -1,5 +1,5 @@
 <template>
-  <travelers-edit :id="2" :name="name" :email="email" :request="request" />
+  <travelers-edit :id="id" :name="name" :email="email" />
 </template>
 
 <script>
@@ -14,22 +14,22 @@ export default {
       if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
 
       try {
-        const res = await app.$axios.$get(`/user/${params.id}`, {
+        const res = await app.$axios.$get(`/user`, {
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
             Authorization: store.state.user.loginToken
           }
         })
 
-        const res2 = await app.$axios.$get(`/request/${params.id}`, {
-          headers: {
-            'Content-Type': 'application/json;charset=utf-8',
-            Authorization: store.state.user.loginToken
-          }
-        })
+        // const res2 = await app.$axios.$get(`/request/user/${params.id}`, {
+        //   headers: {
+        //     'Content-Type': 'application/json;charset=utf-8',
+        //     Authorization: store.state.user.loginToken
+        //   }
+        // })
 
         return {
-          id: params.id,
+          id: res.record.id,
           name: res.record.name,
           email: res.record.email
         }

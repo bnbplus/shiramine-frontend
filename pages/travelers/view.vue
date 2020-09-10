@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <travelers-view :name="name" :email="email" :request="`${request}`"/>
+        <travelers-view :name="name" :email="email"/>
         <div style="margin-top:50px">
             <travelers-table :data="data" :columns="columns"> </travelers-table>
         </div>
@@ -58,7 +58,7 @@ export default {
             return {
                 name: res.record.name,
                 email: res.record.email,
-                request: resreq.records.reduce( (a, b) => a.information + '&nbsp;&nbsp;' + b.information )
+                request: resreq.records.reduce( (a, b) => a.information + b.information )
             }
         } catch (err) {
             console.log(err)

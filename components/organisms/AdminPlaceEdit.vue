@@ -42,6 +42,7 @@ export default {
             console.log(err);
         }
     },
+    
     props:{
         name:{
             type: String,

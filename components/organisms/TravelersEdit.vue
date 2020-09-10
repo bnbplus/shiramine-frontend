@@ -1,14 +1,14 @@
 <template>
     <form @submit.prevent="editUser">
         <b-field label="名前"> 
-            <b-input v-model="name" ></b-input>
+            <b-input v-model="formName" ></b-input>
         </b-field>
         <b-field label="メールアドレス">
-            <b-input v-model="email" type="email"></b-input>
+            <b-input v-model="formEmail" type="email"></b-input>
         </b-field>
-        <b-field label="頼みごと">
+        <!-- <b-field label="頼みごと">
             <b-input v-model="request"></b-input>
-        </b-field>
+        </b-field> -->
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
                 変更
@@ -19,17 +19,6 @@
 
 <script>
 export default {
-    async editUser() {
-        try {
-            const back = await this.$axios.post(`/user/edit/${this.id}`, {
-                name: this.name,
-                email: this.email,
-                request: this.request 
-            })
-        } catch (err) {
-            console.log(err);
-        }
-    },
     props:{
         id:{
             type: Number,
@@ -43,15 +32,37 @@ export default {
             type: String,
             requiered: true
         },
-        request:{
-            type: String,
-            requiered: true
+        // request:{
+        //     type: String,
+        //     requiered: true
+        // }
+    },
+    data() {
+        return {
+            formName: null,
+            formEmail: null,
         }
-    },　
+    },
+    mounted() {
+        this.formName = this.name
+        this.formEmail = this.email
+    },
     methods: {
-        sendData() {
-            console.log(this.name, this.age);
-        }
+        async editUser() {
+            try {
+                const back = await this.$axios.$post(`/user/edit/${this.id}`, {
+                        name: this.formName,
+                        email: this.formEmail
+                    }, {
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        Authorization: this.$store.state.user.loginToken
+                    },
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        },
     }
 }
 </script>
