@@ -1,10 +1,10 @@
 <template>
-    <form @submit.prevent="sendData">
+    <form @submit.prevent="editUser">
         <b-field label="名前"> 
             <b-input v-model="name" ></b-input>
         </b-field>
         <b-field label="メールアドレス">
-            <b-input v-model="email" type="number"></b-input>
+            <b-input v-model="email" type="email"></b-input>
         </b-field>
         <b-field label="頼みごと">
             <b-input v-model="request"></b-input>
@@ -19,8 +19,22 @@
 
 <script>
 export default { 
-    
+    async editUser() {
+        try {
+            const back = await this.$axios.post(`/user/edit/${this.id}`, {
+                name: this.name,
+                email: this.email,
+                request: this.request 
+            })
+        } catch (err) {
+            console.log(err);
+        }
+    },
     props:{
+        id:{
+            type: Number,
+            requiered: true
+        },
         name:{
             type: String,
             requiered: true
@@ -33,7 +47,7 @@ export default {
             type: String,
             requiered: true
         }
-    },
+    },　
     methods: {
         sendData() {
             console.log(this.name, this.age);

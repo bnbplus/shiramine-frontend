@@ -38,8 +38,10 @@ export default {
                     email: this.email,
                     password: this.password 
                 })
+                
                 this.$store.commit('user/setLoginToken', back.data.token)
                 this.$store.commit('user/setUserRole', back.data.role)
+                this.$store.commit('user/serUserId', back.data.userId)
                 this.transition()
             } catch (err) {
                 console.log(err);

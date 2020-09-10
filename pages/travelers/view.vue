@@ -51,13 +51,21 @@ export default {
             return {
                 name: res.record.name,
                 email: res.record.email,
-                request: '不明' 
+            }
+            console.log(this.userId)
+
+            const resreq = await app.$axios.$get(`/request/${this.userId}`, {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
+            })
+            return {
+                request: resreq.record.information
             }
         } catch (err) {
             console.log(err)
             return {
-                name: '',
-                email: '',
                 request: ''
             }
         }
