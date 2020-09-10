@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <travelers-view :name="name" :email="email" :request="request"/>
+        <travelers-view :name="name" :email="email" :request="`${request}`"/>
         <div style="margin-top:50px">
             <travelers-table :data="data" :columns="columns"> </travelers-table>
         </div>
@@ -49,7 +49,7 @@ export default {
                 }
             })
 
-            const resreq = await app.$axios.$get(`/request/${store.state.user.userId}`, {
+            const resreq = await app.$axios.$get(`/request/user/${store.state.user.userId}`, {
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken
@@ -58,7 +58,7 @@ export default {
             return {
                 name: res.record.name,
                 email: res.record.email,
-                request: resreq.record.information
+                request: resreq.records.reduce( (a, b) => a.information + '&nbsp;&nbsp;' + b.information )
             }
         } catch (err) {
             console.log(err)
