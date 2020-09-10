@@ -18,7 +18,7 @@
 </template>
 
 <script>
-export default { 
+export default {
     async editUser() {
         try {
             const back = await this.$axios.post(`/user/edit/${this.id}`, {
@@ -39,8 +39,8 @@ export default {
             type: String,
             requiered: true
         },
-        age:{
-            type: Number,
+        email:{
+            type: String,
             requiered: true
         },
         request:{

@@ -48,19 +48,16 @@ export default {
                     Authorization: store.state.user.loginToken
                 }
             })
-            return {
-                name: res.record.name,
-                email: res.record.email,
-            }
-            console.log(this.userId)
 
-            const resreq = await app.$axios.$get(`/request/${this.userId}`, {
+            const resreq = await app.$axios.$get(`/request/${store.state.user.userId}`, {
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken
                 }
             })
             return {
+                name: res.record.name,
+                email: res.record.email,
                 request: resreq.record.information
             }
         } catch (err) {
