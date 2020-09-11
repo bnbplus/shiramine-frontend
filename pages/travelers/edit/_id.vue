@@ -21,13 +21,6 @@ export default {
           }
         })
 
-        // const res2 = await app.$axios.$get(`/request/user/${params.id}`, {
-        //   headers: {
-        //     'Content-Type': 'application/json;charset=utf-8',
-        //     Authorization: store.state.user.loginToken
-        //   }
-        // })
-
         return {
           id: res.record.id,
           name: res.record.name,

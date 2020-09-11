@@ -70,6 +70,10 @@ export default {
           to: '/admin/travelers'
         },
         {
+          title: '頼みごと一覧',
+          to: '/admin/request'
+        },
+        {
           title: '場所一覧',
           to: '/admin/place'
         },

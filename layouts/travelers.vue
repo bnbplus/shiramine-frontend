@@ -23,7 +23,15 @@
                     :to="`/travelers/edit/${$store.state.user.userId}`"
                     exact-active-class="is-active"
                     >
-                        Edit
+                        個人情報の変更
+                    </nuxt-link>
+                </b-navbar-item>
+                <b-navbar-item>
+                    <nuxt-link
+                    :to="`/travelers/rquestedit/${$store.state.user.userId}`"
+                    exact-active-class="is-active"
+                    >
+                        頼みごとの変更
                     </nuxt-link>
                 </b-navbar-item>
             </template>

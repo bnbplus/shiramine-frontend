@@ -6,9 +6,6 @@
         <b-field label="メールアドレス">
             <b-input v-model="formEmail" type="email"></b-input>
         </b-field>
-        <!-- <b-field label="頼みごと">
-            <b-input v-model="request"></b-input>
-        </b-field> -->
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
                 変更
@@ -31,11 +28,7 @@ export default {
         email:{
             type: String,
             requiered: true
-        },
-        // request:{
-        //     type: String,
-        //     requiered: true
-        // }
+        }
     },
     data() {
         return {
