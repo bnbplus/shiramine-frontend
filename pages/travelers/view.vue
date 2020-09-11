@@ -2,6 +2,9 @@
     <section class="section">
         <travelers-view :name="name" :email="email"/>
         <div style="margin-top:50px">
+            <travelers-request :data="requestData" :columns="requestColumns" />
+        </div>
+        <div style="margin-top:50px">
             <travelers-table :data="data" :columns="columns"> </travelers-table>
         </div>
     </section>
@@ -11,6 +14,7 @@
 <script>
 import TravelersView from '~/components/organisms/TravelersView.vue'
 import TravelersTable from '~/components/organisms/TravelerTable.vue'
+import TravelersRequest from '~/components/organisms/TravelersRequest.vue'
 
 var myData = [
     { 'place': '雪だるまカフェ', 'time': '2020/9/20 12:19'},
@@ -27,16 +31,26 @@ var myColumns = [
     }
 ]
 
+
+
 export default {
     layout:'travelers',
     components:{
         TravelersView,
-        TravelersTable
+        TravelersTable,
+        TravelersRequest
     },
     data() {
         return {
             data: myData,
-            columns: myColumns
+            columns: myColumns,
+            requestColumns: [
+                {
+                    field: 'information',
+                    label: '頼みごと',
+                }
+            ]
+
         }
     },
     async asyncData({ store, app, redirect }) {
@@ -55,10 +69,12 @@ export default {
                     Authorization: store.state.user.loginToken
                 }
             })
+            console.log(resreq)
             return {
                 name: res.record.name,
                 email: res.record.email,
-                request: resreq.records.reduce( (a, b) => a.information + b.information )
+                requestData: resreq.records
+
             }
         } catch (err) {
             console.log(err)

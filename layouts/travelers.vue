@@ -10,30 +10,20 @@
                 </b-navbar-item>
             </template>
             <template slot="start">
-                <b-navbar-item>
-                    <nuxt-link
-                    to="/travelers/view/"
-                    exact-active-class="is-active"
-                    >
-                        My Page
-                    </nuxt-link>
-                </b-navbar-item>
-                <b-navbar-item>
-                    <nuxt-link
-                    :to="`/travelers/edit/${$store.state.user.userId}`"
-                    exact-active-class="is-active"
-                    >
-                        個人情報の変更
-                    </nuxt-link>
-                </b-navbar-item>
-                <b-navbar-item>
-                    <nuxt-link
-                    :to="`/travelers/rquestedit/${$store.state.user.userId}`"
-                    exact-active-class="is-active"
-                    >
-                        頼みごとの変更
-                    </nuxt-link>
-                </b-navbar-item>
+                <nuxt-link
+                to="/travelers/view/"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    マイページ
+                </nuxt-link>
+                <nuxt-link
+                :to="`/travelers/edit/${$store.state.user.userId}`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    個人情報の変更
+                </nuxt-link>
             </template>
         </b-navbar>
         <div class="container column is-10">

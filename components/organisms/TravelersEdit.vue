@@ -7,7 +7,7 @@
             <b-input v-model="formEmail" type="email"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
-            <b-button native-type="submit" type="is-primary" expanded>
+            <b-button native-type="submit" type="is-link" @click="$router.push(`/travelers/view`)" expanded>
                 変更
             </b-button>
         </div>

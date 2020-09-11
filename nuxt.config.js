@@ -53,6 +53,6 @@ export default {
     }
   },
   axios: {
-    baseURL: 'http://localhost:4000',
+    baseURL: 'http://localhost:4000/api',
   }
 }
