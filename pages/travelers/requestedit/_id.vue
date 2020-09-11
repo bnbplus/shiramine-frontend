@@ -1,43 +1,37 @@
 <template>
-  <traveler-request-edit :id="id" :information="information"/>
+  <travelers-request-edit :id="id" :information="information"/>
 </template>
 
 <script>
-import TravelerRequestEdit from '@/components/organisms/TravelerRequestEdit.vue'
-
+import TravelersRequestEdit from '@/components/organisms/TravelersRequestEdit.vue'
 export default {
-    layout:'travelers',
-    components: {
-        TravelerRequestEdit,
-    },
-    data(){
-        return{
-            myColumns:[
-                {
-                    field: 'request',
-                    label: '頼みごと'
-                }
-            ]
-        }
-    },
-    async asyncData({store, app, redirect, params}) {
+  layout:'travelers',
+
+  components: {
+      TravelersRequestEdit,
+  },
+
+  async asyncData({ store, app, redirect, params }) {
         if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
         try {
-            const res = await app.$axios.$get(`/request/user/${params.id}`, {
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8',
-                Authorization: store.state.user.loginToken
-            }
+            const res = await app.$axios.$get(`/request/${params.id}`, {
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
             })
-            return{
-                id: params.id,
-                data: res.records
+            console.log(res.record)
+            return {
+                id: res.record.id,
+                userId: res.record.userId,
+                information: res.record.information
             }
         } catch (err) {
             console.log(err)
             return {
-                id: '',
-                
+                id: 0,
+                userId: "",
+                information: "",
             }
         }
     }
