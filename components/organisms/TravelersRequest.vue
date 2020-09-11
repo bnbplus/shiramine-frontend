@@ -13,6 +13,7 @@
                                 <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.information }}</b-table-column>
                                 <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
                                     <b-icon icon="dots-vertical" slot="trigger"></b-icon>
+                                    <b-dropdown-item aria-role="listitem" @click="$router.push(`/travelers/requestdone/${p.row.id}`)">完了</b-dropdown-item>
                                     <b-dropdown-item aria-role="listitem" @click="$router.push(`/travelers/requestedit/${p.row.id}`)">編集</b-dropdown-item>
                                     <b-dropdown-item aria-role="listitem" v-on:click.native="requestDelete(p.row.id)">削除</b-dropdown-item>
                                 </b-dropdown>
