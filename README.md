@@ -2,6 +2,16 @@
 
 > My world-class Nuxt.js project
 
+## dockerを使う際の設定
+
+```bash
+# npmコマンドが使える状態で
+npm install
+npm run build
+docker build -t shiramine-frontend .
+docker run -d -p 3000:3000 shiramine-frontend
+```
+
 ## Build Setup
 
 ```bash
