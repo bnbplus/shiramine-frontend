@@ -58,8 +58,8 @@ export default {
                     case 'traveller':
                         this.$router.push('/travelers/view')
                         break
-                    case 'keyperson':
-                        // FIXME: goto keyperson page
+                    case 'shop':
+                        this.$router.push('/shop')
                         break
                 }
         },

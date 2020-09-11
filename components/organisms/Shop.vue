@@ -6,7 +6,7 @@
                     <div class="content">
                         <div class="table-container">
                             <b-table
-                                :data="data"
+                                :requestData="requestData"
                                 :debounce-search="1000"
                                 
                             >
@@ -26,9 +26,14 @@
 </template>
 
 <script>
+
 export default {
     props:{
-        data:{
+        requestData:{
+            type: Array,
+            requiered: true
+        },
+        userData:{
             type: Array,
             requiered: true
         },
@@ -37,8 +42,10 @@ export default {
             requiered: true
         }
     },
+
     mounted() {
-        console.log(this.columns);
+        console.log(requestData);
+        console.log(userData);
     }
 }
 </script>

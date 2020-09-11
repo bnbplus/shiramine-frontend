@@ -1,6 +1,6 @@
 <template>
   <section class="section">
-      <shop :data="data" :columns="columns"> </shop>
+      <shop :requestData="requestData" :userData="userData" :columns="columns"> </shop>
   </section>
 </template>
 
@@ -26,25 +26,33 @@ export default {
 
     data() {
         return {
-            columns: myColumns
+            columns: myColumns,
         }
     },
 
     async asyncData({ store, app, redirect }) {
         try {
             const res = await app.$axios.$get('/requests',{
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
             })
-            // const res2 = await app.$$axios.$get(`/user/${res.records.userId}`,{
-            // })
+            const res2 = await app.$$axios.$get(`/users`,{
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    Authorization: store.state.user.loginToken
+                }
+            })
             return {
-                data: res.records,
-                //userName: res2.record.name
+                requestData: res.records,
+                userData: res2.records
             }
         } catch (err) {
             console.log(err)
             return {
-                data: [],
-                //userName: ""
+                requestData: [],
+                userData:[]
             }
         }
     },
