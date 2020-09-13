@@ -44,11 +44,11 @@
 </template>
 
 <script>
-//{{ requestData.filter( request => users.id === request.userId )[0].information }}
+//{{ requestData.filter( user => users.id === user.id )[0].information }}
 export default {
     data(){
         return{
-            formSolutioner:null
+            formSolutioner:[]
         }
     },
     props:{
