@@ -9,17 +9,18 @@ import Shop from '~/components/organisms/Shop.vue'
 
 var myColumns = [
     {
-        field: 'userId',
-        label: '名前',
+        field: 'request',
+        label: '頼みごと',
     },
     {
-        field: 'request',
-        label: '頼みごと'
+        field: 'solutioner',
+        label: '頼みごとをしてくれた人'
     }
 ]
 
 
 export default {
+    
     components:{
         Shop
     },
@@ -31,6 +32,7 @@ export default {
     },
 
     async asyncData({ store, app, redirect }) {
+        if ( !store.state.user.loginToken ) { return redirect('/') }
         try {
             const res = await app.$axios.$get('/requests',{
                 headers: {
@@ -38,12 +40,15 @@ export default {
                     Authorization: store.state.user.loginToken
                 }
             })
-            const res2 = await app.$$axios.$get(`/users`,{
+            console.log(res.records)
+            const res2 = await app.$axios.$get(`/users`,{
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken
                 }
             })
+            
+            console.log(res2.records)
             return {
                 requestData: res.records,
                 userData: res2.records
