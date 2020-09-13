@@ -22,7 +22,7 @@
                                         <b-table-column :field="columns[1].field" :label="columns[1].label">
                                             <form @submit.prevent="doneRequest(p.row.id)">
                                                 <b-field>
-                                                    <b-select v-model="formSolutioner">
+                                                    <b-select v-model="formSolutioner[getFormSolutionerIndex(p.row.id)].value">
                                                         <option v-for="(users, i) in userData" :value="users.id" :key="i">
                                                             {{ users.name }}
                                                         </option>
@@ -48,7 +48,7 @@
 export default {
     data(){
         return{
-            formSolutioner:null
+            formSolutioner:[]
         }
     },
     props:{
@@ -63,6 +63,12 @@ export default {
         columns:{
             type: Array,
             requiered: true
+        }
+    },
+    created() {
+
+        for (const data of this.requestData) {
+            this.formSolutioner.push({ id: data.id, value: null })
         }
     },
     methods: {
@@ -81,6 +87,10 @@ export default {
                 console.log(err);
             }
         },
+        getFormSolutionerIndex(requestId) {
+            const index = this.formSolutioner.findIndex(e => e.id === requestId)
+            return index
+        }
     },
 }
 </script>
