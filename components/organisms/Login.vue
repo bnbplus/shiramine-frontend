@@ -3,7 +3,7 @@
 
         <form @submit.prevent="login" action="/">
 
-            <h1 class="title">ロゴ</h1>
+            <h1 class="title">ログイン</h1>
         
             <b-field label="Email">
                 <b-input type="email" v-model="email" maxlength="100" />

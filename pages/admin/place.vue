@@ -27,7 +27,7 @@ export default {
                 },
                 {
                     field: 'bnbSub',
-                    label: 'BLE+のsub',
+                    label: 'BNB+のsub',
                 },
                 {
                     field: 'latitude',
