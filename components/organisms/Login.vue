@@ -17,6 +17,10 @@
                 ログイン
             </b-button>
 
+            <b-button @click="login_openId">
+                OpenID
+            </b-button>
+
         </form>
 
     </section>
@@ -48,6 +52,23 @@ export default {
             }
             this.email = this.password = ''
         },
+
+        /** OpenId Login */
+        login_openId: function () {
+            // Our Local OpenId Server
+            const opUrl = "http://localhost:3001"
+
+            // Our ClientId OpenId
+            const clientId = 123456789
+
+            // Url redirect
+            const redirectUri = "http://localhost:3000/openid/callback"
+
+            // Open OpenId Login form
+            let url = opUrl + "/auth?client_id=" + clientId + "&scope=openid%20email&response_type=code&redirect_uri=" + redirectUri
+            window.open(url,'popUpWindow','height=500,width=600,left=960, top=0')
+        },
+
         /** 画面遷移 */
         transition() {
             if ( !this.$store.state.user.loginToken || !this.$store.state.user.userRole ) { return }
