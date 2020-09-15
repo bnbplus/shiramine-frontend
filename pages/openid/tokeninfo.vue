@@ -1,24 +1,24 @@
 <template>
-    <section>       
+    <section>
         <div v-if="access_token != null" class="container">
-            <h1 class="title">Information</h1>
-            <b-field label="Access Token:">
+            <h1 class="title">Token Information</h1>
+            <b-field label="Token:">
                 <div class="accessToken">{{ access_token }}</div>
             </b-field>
 
-            <b-field label="Decode Access Token:">
+            <b-field label="Decoded Token:">
                 <div>
-                    <div>sub (Your Id in our OpenId Server): <br> <span style="color: purple"> {{ sub }}</span></div>
-                    <div>jti: <br> <span style="color: purple"> {{ jti }}</span></div>
-                    <div>iss: <br> <span style="color: purple"> {{ iss }}</span></div>
-                    <div>iat: <br> <span style="color: purple"> {{ iat }}</span></div>
-                    <div>exp: <br> <span style="color: purple"> {{ exp }}</span></div>
-                    <div>scope: <br> <span style="color: purple"> {{ scope }}</span></div>
-                    <div>aud: <br> <span style="color: purple"> {{ aud }}</span></div>
+                    <div>sub (OpenId Server User ID): <br> <span style="color: purple"> {{ decoded_token['sub'] }}</span></div>
+                    <div>jti: <br> <span style="color: purple"> {{ decoded_token['jti'] }}</span></div>
+                    <div>iss: <br> <span style="color: purple"> {{ decoded_token['iss'] }}</span></div>
+                    <div>iat: <br> <span style="color: purple"> {{ decoded_token['iat'] }}</span></div>
+                    <div>exp: <br> <span style="color: purple"> {{ decoded_token['exp'] }}</span></div>
+                    <div>scope: <br> <span style="color: purple"> {{ decoded_token['scope'] }}</span></div>
+                    <div>aud: <br> <span style="color: purple"> {{ decoded_token['aud'] }}</span></div>
                 </div>
             </b-field>
         </div>
-        <div v-else>
+        <div v-else class="container">>
             <h1 class="title">No Token Response</h1>
         </div>
     </section>
@@ -26,7 +26,7 @@
 
 <style>
     .container {
-        display: flex;  
+        display: flex;
         flex-wrap: wrap;
     }
 
@@ -37,37 +37,22 @@
 </style>
 
 <script>
-
-import jwt_decode from "jwt-decode";
+import jwt from 'jsonwebtoken';
 
 export default {
     data () {
         return {
             access_token: null,
-            jti: '',
-            sub: '',
-            iss: '',
-            iat: '',
-            exp: '',
-            scope: '',
-            aud: ''
+            decoded_token: {},
         }
+    },
+    methods: {
+       
     },
     mounted() {
         this.access_token = window.localStorage.getItem('access_token') ? window.localStorage.getItem('access_token') : null
-        
         // Decode Token
-        const decoded = this.access_token ? jwt_decode(this.access_token) : null
-
-        if(decoded != null) {
-            this.sub = decoded.sub    
-            this.jti = decoded.jti
-            this.iss = decoded.iss
-            this.iat = decoded.iat
-            this.exp = decoded.exp
-            this.scope = decoded.scope
-            this.aud = decoded.aud
-        }   
+        this.decoded_token = this.access_token ? jwt.decode(this.access_token) : {}
     },
 }
 </script>
