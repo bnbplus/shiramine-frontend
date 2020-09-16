@@ -61,6 +61,8 @@ export default {
                     case 'shop':
                         this.$router.push('/shop')
                         break
+                    case 'null':
+                        this.$router.push('first')
                 }
         },
         mounted() {
