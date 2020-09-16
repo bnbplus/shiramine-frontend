@@ -1,5 +1,5 @@
 <template>
-  <admin-travelers-edit :name="name" :bletag="bletag" :role="role" :id="id"/>
+  <admin-travelers-edit :name="name" :bleUuid="bleUuid" :role="role" :id="id"/>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     async asyncData({store, app, redirect, params}) {
       if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
       try {
-        const res = await app.$axios.$get(`/user`, {
+        const res = await app.$axios.$get(`/userid/${params.id}`, {
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
             Authorization: store.state.user.loginToken
@@ -22,7 +22,7 @@ export default {
         return {
           id: res.record.id,
           name: res.record.name,
-          bletag: res.record.bleToken,
+          bleUuid: res.record.bleUuid,
           role: res.record.role
         }
       } catch (err) {
