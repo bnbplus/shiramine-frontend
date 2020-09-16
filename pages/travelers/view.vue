@@ -1,11 +1,13 @@
 <template>
     <section class="section">
-        <travelers-view :name="name" :email="email"/>
-        <div style="margin-top:50px">
-            <travelers-request :data="requestData" :columns="requestColumns" />
-        </div>
-        <div style="margin-top:50px">
-            <travelers-table :data="data" :columns="columns"> </travelers-table>
+        <div class="container column is-10">
+            <travelers-view :name="name" :email="email"/>
+            <div style="margin-top:50px">
+                <travelers-request :data="requestData" :columns="requestColumns" />
+            </div>
+            <div style="margin-top:50px">
+                <travelers-table :data="data" :columns="columns"> </travelers-table>
+            </div>
         </div>
     </section>
     

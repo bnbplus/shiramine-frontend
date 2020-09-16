@@ -24,11 +24,16 @@
                 >
                     個人情報の変更
                 </nuxt-link>
+                <nuxt-link
+                :to="`/movement`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    行動履歴
+                </nuxt-link>
             </template>
         </b-navbar>
-        <div class="container column is-10">
-            <nuxt />
-        </div>
+        <nuxt />
     </div>
     
 </template>

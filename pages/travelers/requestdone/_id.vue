@@ -1,15 +1,16 @@
 <template>
-    <section>
-        <div class="content">
-            <p>
-            <strong>{{ titleInfo }}</strong>
-            <br>
-                {{ information }}
-            </p>
-        </div>
-        <travelers-request-done :id="id" :data="data"/>
-    </section>
-    
+    <div class="container column is-10">
+        <section>
+            <div class="content">
+                <p>
+                <strong>{{ titleInfo }}</strong>
+                <br>
+                    {{ information }}
+                </p>
+            </div>
+            <travelers-request-done :id="id" :data="data"/>
+        </section>
+    </div>
 </template>
 
 <script>
