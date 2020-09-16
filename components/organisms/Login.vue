@@ -1,11 +1,11 @@
 <template>
     <section class="section">
 
-        <form @submit.prevent="login" action="/">
+        <form>
 
             <h1 class="title">ログイン</h1>
         
-            <b-field label="Email">
+            <!-- <b-field label="Email">
                 <b-input type="email" v-model="email" maxlength="100" />
             </b-field>
 
@@ -15,6 +15,10 @@
 
             <b-button native-type="submit">
                 ログイン
+            </b-button> -->
+
+            <b-button @click="loginOpenId" >
+                Login with bnb+
             </b-button>
 
         </form>
@@ -65,9 +69,13 @@ export default {
                         this.$router.push('first')
                 }
         },
-        mounted() {
-            // ログイン済みなら遷移
-            this.transition()
+        loginOpenId() {
+            const opUrl = process.env.bnbServerUrl
+            const clientId = process.env.bnbClientId
+            const redirectUri = `${process.env.baseUrl}/openid/callback`
+            const url = `${opUrl}/auth?client_id=${clientId}&scope=openid%20email&response_type=code&redirect_uri=${redirectUri}`
+            console.log(url);
+            window.open(url,'popUpWindow','height=500,width=600,left=960,top=0')
         }
     }
 }

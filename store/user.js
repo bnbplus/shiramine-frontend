@@ -1,5 +1,6 @@
 export const state = () => ({
     loginToken: null,
+    bnbToken: null,
     userRole: null,
     userId:null
 })
@@ -7,6 +8,9 @@ export const state = () => ({
 export const mutations = {
     setLoginToken(state, loginToken){
         state.loginToken = loginToken
+    },
+    setBnbToken(state, bnbToken) {
+        state.bnbToken = bnbToken
     },
     setUserRole(state, userRole){
         state.userRole = userRole
