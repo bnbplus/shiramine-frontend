@@ -56,7 +56,7 @@ export default {
     }
   },
   axios: {
-    baseURL: 'http://localhost:4000/api',
+    baseURL: 'http://localhost:4000/api' || process.env.API_BASE_URL,
   },
   env: {
     baseUrl: 'http://localhost:3000' || process.env.BASE_URL,
