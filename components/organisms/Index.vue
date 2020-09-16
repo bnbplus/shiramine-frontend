@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-        <div class="columns is-mobile ceterdiv" style="">
+        <div class="columns is-mobile centerdiv">
             <div class="column" style="margin-left:auto; margin-right:auto">
                 <img src="@/assets/img/shiramine_logo_type1_grade.png" style="width:60%">
                 <form @submit.prevent="login" action="/">
