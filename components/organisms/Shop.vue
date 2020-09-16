@@ -4,9 +4,9 @@
             <article class="media">
                 <div class="media-content">
                     <div class="content is-size-5">
-                        <div class="is-size-4">
-                            <div class="has-text-weight-bold" style="float:left">名前：{{users.name}}</div>
-                            <b-button tag="router-link" to="/" type="is-link" style="margin-left:5% float:left"> 退出 </b-button>
+                        <div class="is-size-4" style="display: flex;">
+                            <div class="has-text-weight-bold" style="">名前：{{users.name}}</div>
+                            <b-button tag="router-link" to="/" type="is-link" style="margin-left:5%"> 退出 </b-button>
                         </div>
                         
                         <div class="table-container">
