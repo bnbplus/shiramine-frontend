@@ -51,7 +51,8 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+      config.node = { fs: 'empty', tls: 'empty' }
+    },
   },
   axios: {
     baseURL: 'http://localhost:4000/api',
