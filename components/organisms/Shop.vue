@@ -3,10 +3,10 @@
         <div class="box" v-for="(users, i) in userData" :key="i">
             <article class="media">
                 <div class="media-content">
-                    <div class="content">
-                        <div>
-                            名前：{{users.name}}
-                            <b-button tag="router-link" to="/" type="is-link"> 退出 </b-button>
+                    <div class="content is-size-5">
+                        <div class="is-size-4" style="display: flex;">
+                            <div class="has-text-weight-bold" style="">名前：{{users.name}}</div>
+                            <b-button tag="router-link" to="/" type="is-link" style="margin-left:5%"> 退出 </b-button>
                         </div>
                         
                         <div class="table-container">
@@ -18,7 +18,7 @@
                                     :numeric= "true"
                                 >
                                     <template slot-scope="p" v-if="p.row.userId===users.id">
-                                        <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.information }}</b-table-column>
+                                        <b-table-column :field="columns[0].field" :label="columns[0].label" width="65%">{{ p.row.information }}</b-table-column>
                                         <b-table-column :field="columns[1].field" :label="columns[1].label">
                                             <form @submit.prevent="doneRequest(p.row.id)">
                                                 <b-field>
