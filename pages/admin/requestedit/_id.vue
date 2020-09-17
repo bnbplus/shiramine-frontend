@@ -8,7 +8,7 @@ export default {
   layout:'admin',
 
   components: {
-      AdminRequestEdit,
+    AdminRequestEdit,
   },
 
   async asyncData({ store, app, redirect, params }) {
