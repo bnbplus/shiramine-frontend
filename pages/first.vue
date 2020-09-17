@@ -1,29 +1,31 @@
 <template>
-    <div>
-        <div>
-            <h1>新規登録</h1>
-            <input type="text" name="name" placeholder="名前" v-model="name"/>
-            <br />
-            <select name="role" v-model="role">
-                <option value="" style="display:none;">立場</option>
-                <option value="traveller">旅人(参加者)</option>
-                <option value="villager">村民</option>
-                <option value="shop">店員</option>
-            </select>
-            <br />
-            <br/>
-            <p>
-                <h2>内容確認</h2>
-                <label>名前: {{name}} </label>
-                <br/>
-                <label>立場: {{role}} </label>
-                <br/>
-                <label>BNBTokenSub: {{ bnbSub }} </label>
-                <br/>
-            </p>
-            <button @click="createUser">送信</button>
+    <section class="section">
+        <div class="container column is-10">
+            <div class="box">
+                <article class="media">
+                    <div class="media-content">
+                        <div class="content">
+                            <h1>ようこそ</h1>
+                            <b-field label="名前" style="margin-top:5%">
+                                <b-input v-model="name"></b-input>
+                            </b-field>
+                            <br />
+                            <strong>立場</strong>
+                            <b-select name="role" v-model="role">
+                                <option value="" style="display:none;">立場</option>
+                                <option value="traveller">旅人(参加者)</option>
+                                <option value="villager">村民</option>
+                                <option value="shop">店員</option>
+                            </b-select>
+                            <b-button native-type="submit" type="is-link" @click="createUser" expanded style="margin-top:5%">
+                                送信
+                            </b-button>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -42,7 +44,7 @@ export default {
     },
     methods: {
         async createUser() {
-            const param = { 
+            const param = {
                 name: this.name,
                 bnbplusSubject: this.bnbSub,
                 role: this.role,
