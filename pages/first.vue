@@ -42,7 +42,7 @@ export default {
     },
     methods: {
         async createUser() {
-            const param = {
+            const param = { 
                 name: this.name,
                 bnbplusSubject: this.bnbSub,
                 role: this.role,

@@ -11,8 +11,7 @@
           href="/"
         >
           <img
-            src="~assets/buefy.png"
-            alt="Buefy"
+            src="@/assets/img/shiramine_logo_type1_grade.png"
             height="28"
           >
         </a>

@@ -1,7 +1,6 @@
 <template>
     <section>
         <info-view :title="titleName" :info="name"/>
-        <info-view :title="titleEmail" :info="email" />
     </section>
 </template>
 
@@ -13,16 +12,11 @@ export default {
         name: {
             type: String,
             default: '匿名'
-        },
-        email: {
-            type: String,
-            default: '不詳'
         }
     },
     data() {
         return {
-            titleName: '名前',
-            titleEmail: 'メールアドレス'
+            titleName: '名前'
         }
     },
     components:{
