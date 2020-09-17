@@ -1,5 +1,7 @@
 <template>
-    <traveler-request-add />
+    <div class="container column is-10">
+        <traveler-request-add />
+    </div>
 </template>
 
 <script>

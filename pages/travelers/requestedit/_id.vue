@@ -1,5 +1,7 @@
 <template>
-  <travelers-request-edit :id="id" :information="information"/>
+    <div class="container column is-10">
+        <travelers-request-edit :id="id" :information="information"/>
+    </div>
 </template>
 
 <script>

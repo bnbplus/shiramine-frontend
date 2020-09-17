@@ -1,5 +1,7 @@
 <template>
-  <travelers-edit :id="id" :name="name" :email="email" />
+  <div class="container column is-10">
+    <travelers-edit :id="id" :name="name" :email="email" />
+  </div>
 </template>
 
 <script>
