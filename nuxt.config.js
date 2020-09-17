@@ -54,6 +54,17 @@ export default {
     */
     extend (config, ctx) {
       config.node = { fs: 'empty', tls: 'empty' }
+    },
+    build: {
+      optimization: {
+        minimize: true,
+        minimizer: [
+          new TerserPlugin({
+            cache: true,
+            parallel: false
+          })
+        ]
+      }
     }
   },
   axios: {
