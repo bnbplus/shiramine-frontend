@@ -56,13 +56,13 @@ export default {
     }
   },
   axios: {
-    baseURL: 'http://localhost:4000/api' || process.env.API_BASE_URL,
+    baseURL: process.env.API_BASE_URL || 'http://localhost:4000/api',
   },
   env: {
-    baseUrl: 'http://localhost:3000' || process.env.BASE_URL,
-    bnbServerUrl: 'https://op.bnbplus.work' || process.env.BNB_SERVER_URL,
-    bnbTokenEndpoint: 'https://op.bnbplus.work/token' || process.env.BNB_TOKEN_ENDPOINT,
-    bnbClientId: 123456789 || process.env.BNB_CLIENT_ID,
-    bnbGrantType: 'authorization_code' || process.env.BNB_GRANT_TYPE
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    bnbServerUrl: process.env.BNB_SERVER_URL || 'https://op.bnbplus.work',
+    bnbTokenEndpoint: process.env.BNB_TOKEN_ENDPOINT || 'https://op.bnbplus.work/token',
+    bnbClientId: process.env.BNB_CLIENT_ID || 123456789,
+    bnbGrantType: process.env.BNB_GRANT_TYPE || 'authorization_code'
   }
 }
