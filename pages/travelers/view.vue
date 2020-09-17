@@ -51,10 +51,6 @@ export default {
                     field: 'information',
                     label: '頼みごと',
                 },
-                {
-                    field: 'solutioner',
-                    label: '解決者',
-                }
             ]
 
         }

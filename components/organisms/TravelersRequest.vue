@@ -9,8 +9,7 @@
                         :mobile-cards="false"
                     >
                         <template slot-scope="p">
-                            <b-table-column :field="columns[0].field" :label="columns[0].label" width="60%" style="white-space:pre-wrap;word-wrap:break-word;">{{ insertBr(p.row.information) }}</b-table-column>
-                            <b-table-column :field="columns[1].field" :label="columns[1].label" width="35%">{{ !p.row.solutioner ? 'なし' : p.row.solutioner }}</b-table-column>
+                            <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.information }}</b-table-column>
                             <b-dropdown aria-role="list" class="is-pulled-right" position="is-bottom-left">
                                 <b-icon icon="dots-vertical" slot="trigger"></b-icon>
                                 <b-dropdown-item aria-role="listitem" @click="$router.push(`/travelers/requestdone/${p.row.id}`)">完了</b-dropdown-item>
@@ -58,14 +57,6 @@ export default {
                 console.log(err);
             }
         },
-        insertBr(text) {
-            try {
-                const out = text.match(/.{20}/g).join('\n')
-                return out
-            } catch ( err ) {
-                return ''
-            }
-        }
     }
 }
 </script>
