@@ -1,4 +1,4 @@
-
+import TerserPlugin from 'terser-webpack-plugin'
 require('dotenv').config()
 export default {
   mode: 'spa',
