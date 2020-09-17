@@ -3,8 +3,8 @@
         <div class="columns is-mobile centerdiv">
             <div class="column" style="margin-left:auto; margin-right:auto">
                 <img src="@/assets/img/shiramine_logo_type1_grade.png" style="width:60%">
-                <form @submit.prevent="login" action="/">
-                    <b-button native-type="submit" size="is-large">
+                <form>
+                    <b-button @click="loginOpenId" size="is-large">
                         BNB＋でログイン
                     </b-button>
                 </form>
@@ -15,48 +15,15 @@
 
 <script>
 export default {
-    data() {
-        return {
-            email: '',
-            password: ''
-        }
-    },
     methods: {
         /** ログイン処理 */
-        async login() {
-            try {
-                const back = await this.$axios.post('/login', {
-                    email: this.email,
-                    password: this.password 
-                })
-                
-                this.$store.commit('user/setLoginToken', back.data.token)
-                this.$store.commit('user/setUserRole', back.data.role)
-                this.$store.commit('user/serUserId', back.data.userId)
-                this.transition()
-            } catch (err) {
-                console.log(err);
-            }
-            this.email = this.password = ''
-        },
-        /** 画面遷移 */
-        transition() {
-            if ( !this.$store.state.user.loginToken || !this.$store.state.user.userRole ) { return }
-            switch ( this.$store.state.user.userRole ) {
-                    case 'admin':
-                        this.$router.push('/admin/travelers')
-                        break
-                    case 'traveller':
-                        this.$router.push('/travelers/view')
-                        break
-                    case 'shop':
-                        this.$router.push('/shop')
-                        break
-                }
-        },
-        mounted() {
-            // ログイン済みなら遷移
-            this.transition()
+        loginOpenId() {
+            const opUrl = process.env.bnbServerUrl
+            const clientId = process.env.bnbClientId
+            const redirectUri = `${process.env.baseUrl}/openid/callback`
+            const url = `${opUrl}/auth?client_id=${clientId}&scope=openid%20email&response_type=code&redirect_uri=${redirectUri}`
+            console.log(url);
+            window.open(url,'popUpWindow','height=500,width=600,left=960,top=0')
         }
     }
 }

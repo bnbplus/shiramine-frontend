@@ -1,4 +1,5 @@
 
+require('dotenv').config()
 export default {
   mode: 'spa',
   /*
@@ -34,6 +35,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Nuxt.js modules
@@ -55,5 +57,12 @@ export default {
   },
   axios: {
     baseURL: 'http://localhost:4000/api',
+  },
+  env: {
+    baseUrl: 'http://localhost:3000' || process.env.BASE_URL,
+    bnbServerUrl: 'https://op.bnbplus.work' || process.env.BNB_SERVER_URL,
+    bnbTokenEndpoint: 'https://op.bnbplus.work/token' || process.env.BNB_TOKEN_ENDPOINT,
+    bnbClientId: 123456789 || process.env.BNB_CLIENT_ID,
+    bnbGrantType: 'authorization_code' || process.env.BNB_GRANT_TYPE
   }
 }
