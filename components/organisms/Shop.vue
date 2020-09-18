@@ -1,8 +1,5 @@
 <template> 
     <div class="container is-10">
-        <div> {{ receivedMsgs }} </div>
-        <div> {{stayShop}} </div>
-        <div> {{userRequests}} </div>
         <div class="box" v-for="(user, i) in stayShop" :key="i">
             <article class="media">
                 <div class="media-content">
@@ -12,9 +9,30 @@
                             <b-button tag="router-link" to="/" type="is-link" style="margin-left:5%"> 退出 </b-button>
                         </div>
                     </div>
-                    <div class="table-container">
-                        {{ userRequests.filter( x => x.id === user.id ) }}
-                    </div>
+                    <b-table
+                        :data="userRequests"
+                        :debounce-search="1000"
+                        :mobile-cards="false"
+                        :numeric= "true"
+                    >
+                        <template slot-scope="p" v-if="p.row.userId===user.id">
+                            <b-table-column :field="columns[0].field" :label="columns[0].label" width="65%">{{ p.row.information }}</b-table-column>
+                            <b-table-column :field="columns[1].field" :label="columns[1].label">
+                                <form @submit.prevent="doneRequest(p.row.id)">
+                                    <b-field>
+                                        <b-select v-model="formSolutioner[getFormSolutionerIndex(p.row.id)].value">
+                                            <option v-for="(users, i) in userData" :value="users.id" :key="i">
+                                                {{ users.name }}
+                                            </option>
+                                        </b-select>
+                                        <b-button native-type="submit" type="is-link" style="left:5%">
+                                            完了
+                                        </b-button>
+                                    </b-field>
+                                </form>
+                            </b-table-column>
+                        </template>
+                    </b-table>
                 </div>
             </article>
         </div>
@@ -94,24 +112,24 @@ export default {
         }
     },
     props:{
-        // requestData:{
-        //     type: Array,
-        //     requiered: true
-        // },
-        // userData:{
-        //     type: Array,
-        //     requiered: true
-        // },
-        // columns:{
-        //     type: Array,
-        //     requiered: true
-        // }
+        requestData:{
+            type: Array,
+            requiered: true
+        },
+        userData:{
+            type: Array,
+            requiered: true
+        },
+        columns:{
+            type: Array,
+            requiered: true
+        }
     },
     created() {
         this.getAWSIdentity()
-        // for (const data of this.requestData) {
-        //     this.formSolutioner.push({ id: data.id, value: null })
-        // }
+        for (const data of this.requestData) {
+            this.formSolutioner.push({ id: data.id, value: null })
+        }
     },
     methods: {
         async doneRequest (requestId) {
@@ -193,7 +211,7 @@ export default {
 
             // ここに通知
 
-            const nowUserSub = this.receivedMsgs[this.receivedMsgs.length-1].sub
+            const nowUserSub = this.receivedMsgs[0].sub
             let newUser = await this.getUserData(nowUserSub)
             // // FIXME: テスト用あとで消す
             // newUser = {
