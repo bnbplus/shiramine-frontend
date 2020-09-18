@@ -1,12 +1,15 @@
 <template> 
     <div class="container is-10">
+        <div class="box">
+            <h1 class="title">店舗ページ</h1>
+        </div>
         <div class="box" v-for="(user, i) in stayShop" :key="i">
             <article class="media">
                 <div class="media-content">
                     <div class="content is-size-5">
                         <div class="is-size-4" style="display: flex;">
                             <div class="has-text-weight-bold">名前：{{user.name}}</div>
-                            <b-button tag="router-link" to="/" type="is-link" style="margin-left:5%"> 退出 </b-button>
+                            <b-button @click="deleteItem(user.id)" type="is-link" style="margin-left:5%"> 退出 </b-button>
                         </div>
                     </div>
                     <b-table
@@ -15,17 +18,17 @@
                         :mobile-cards="false"
                         :numeric= "true"
                     >
-                        <template slot-scope="p" v-if="p.row.userId===user.id">
+                        <template slot-scope="p" v-if="p.row.userId===user.id&&!p.row.solutioner">
                             <b-table-column :field="columns[0].field" :label="columns[0].label" width="65%">{{ p.row.information }}</b-table-column>
                             <b-table-column :field="columns[1].field" :label="columns[1].label">
-                                <form @submit.prevent="doneRequest(p.row.id)">
+                                <form>
                                     <b-field>
                                         <b-select v-model="formSolutioner[getFormSolutionerIndex(p.row.id)].value">
-                                            <option v-for="(users, i) in userData" :value="users.id" :key="i">
+                                            <option v-for="(users, i) in userData.filter(u=>u.id!==p.row.userId)" :value="users.id" :key="i">
                                                 {{ users.name }}
                                             </option>
                                         </b-select>
-                                        <b-button native-type="submit" type="is-link" style="left:5%">
+                                        <b-button @click="doneRequest(p.row.id, formSolutioner[getFormSolutionerIndex(p.row.id)].value)" type="is-link" style="left:5%">
                                             完了
                                         </b-button>
                                     </b-field>
@@ -36,47 +39,6 @@
                 </div>
             </article>
         </div>
-        <!-- <div class="box" v-for="(users, i) in userData" :key="i">
-            <article class="media">
-                <div class="media-content">
-                    <div class="content is-size-5">
-                        <div class="is-size-4" style="display: flex;">
-                            <div class="has-text-weight-bold">名前：{{users.name}}</div>
-                            <b-button tag="router-link" to="/" type="is-link" style="margin-left:5%"> 退出 </b-button>
-                        </div>
-                        
-                        <div class="table-container">
-                            
-                                <b-table
-                                    :data="requestData"
-                                    :debounce-search="1000"
-                                    :mobile-cards="false"
-                                    :numeric= "true"
-                                >
-                                    <template slot-scope="p" v-if="p.row.userId===users.id">
-                                        <b-table-column :field="columns[0].field" :label="columns[0].label" width="65%">{{ p.row.information }}</b-table-column>
-                                        <b-table-column :field="columns[1].field" :label="columns[1].label">
-                                            <form @submit.prevent="doneRequest(p.row.id)">
-                                                <b-field>
-                                                    <b-select v-model="formSolutioner[getFormSolutionerIndex(p.row.id)].value">
-                                                        <option v-for="(users, i) in userData" :value="users.id" :key="i">
-                                                            {{ users.name }}
-                                                        </option>
-                                                    </b-select>
-                                                    <b-button native-type="submit" type="is-link" style="left:5%">
-                                                        完了
-                                                    </b-button>
-                                                </b-field>
-                                            </form>
-                                        </b-table-column>
-                                    </template>
-                                </b-table>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div> -->
-
     </div>
 </template>
 
@@ -99,7 +61,28 @@ export default {
             mqttClientStatus: 'Disconnected',
             receivedMsgs: [],
             formSolutioner:[],
-            stayShop: [],
+            stayShop: [
+                {
+                    "id": 1,
+                    "name": "suzuki",
+                    "email": "suzuki.test@gmail.com",
+                    "role": "admin",
+                    "bleNumber": 24,
+                    "bnbplusSubject": "08dc1e6b-861b-45c5-aa24-813cd650a2f1",
+                    "createdAt": "2020-09-16T20:11:03.000Z",
+                    "updatedAt": "2020-09-16T20:11:03.000Z"
+                },
+                {
+                    "id": 14,
+                    "name": "鈴木大志",
+                    "email": null,
+                    "role": "shop",
+                    "bleNumber": null,
+                    "bnbplusSubject": "d116cc4f-8181-4785-b044-b5a0d9225a05",
+                    "createdAt": "2020-09-18T04:28:02.000Z",
+                    "updatedAt": "2020-09-18T04:28:02.000Z"
+                }
+            ],
             userRequests: [],
         }
     },
@@ -125,24 +108,36 @@ export default {
             requiered: true
         }
     },
-    created() {
+    async created() {
         this.getAWSIdentity()
         for (const data of this.requestData) {
             this.formSolutioner.push({ id: data.id, value: null })
         }
+        await this.setRequests()
+        console.log('req', this.requestData);
     },
     methods: {
-        async doneRequest (requestId) {
+        deleteItem(userId) {
+            this.stayShop = this.stayShop.filter( n => n.id !== userId )
+        },
+        async doneRequest (requestId, solutionerId) {
             try {
-                const back = await this.$axios.$post(`/request/done/${requestId}`, {
-                    solutioner: this.formSolutioner
+                await this.$axios.$post(`/request/done/${requestId}`, {
+                    solutioner: solutionerId
                 }, {
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
                         Authorization: this.$store.state.user.loginToken
                     },
                 })
-                
+                const back = await this.$axios.get(`/requests`, {
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        Authorization: this.$store.state.user.loginToken
+                    }
+                })
+                console.log(back);
+                this.userRequests = back.data.records
             } catch (err) {
                 console.log(err);
             }
