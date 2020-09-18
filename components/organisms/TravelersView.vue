@@ -1,6 +1,7 @@
 <template>
     <section>
         <info-view :title="titleName" :info="name"/>
+        <info-view :title="titleBlenum" :info="blenum"/>
     </section>
 </template>
 
@@ -12,11 +13,16 @@ export default {
         name: {
             type: String,
             default: '匿名'
+        },
+        blenum: {
+            type: String,
+            default: ' '
         }
     },
     data() {
         return {
-            titleName: '名前'
+            titleName: '名前',
+            titleBlenum: 'BLEタグ番号'
         }
     },
     components:{
