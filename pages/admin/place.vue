@@ -22,7 +22,7 @@ export default {
                     label: '名前',
                 },
                 {
-                    field: 'bleUuid',
+                    field: 'bleNumber',
                     label: 'BLE UUID',
                 },
                 {

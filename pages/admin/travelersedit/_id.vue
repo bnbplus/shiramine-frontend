@@ -1,5 +1,5 @@
 <template>
-  <admin-travelers-edit :name="name" :bleUuid="bleUuid" :role="role" :id="id"/>
+  <admin-travelers-edit :name="name" :bleNumber="bleNumber" :role="role" :id="id"/>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
         return {
           id: res.record.id,
           name: res.record.name,
-          bleUuid: res.record.bleUuid,
+          bleNumber: res.record.bleNumber,
           role: res.record.role
         }
       } catch (err) {
@@ -30,7 +30,7 @@ export default {
         return {
           id: 0,
           name: '',
-          bletag: '',
+          bleNumber: '',
           role: ''
         }
       }

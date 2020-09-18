@@ -25,7 +25,21 @@ export default {
             console.log(url);
             window.open(url,'popUpWindow','height=500,width=600,left=960,top=0')
         }
-    }
+    },
+    mounted() {
+        console.log(('hello'));
+        switch ( this.$store.state.user.userRole ) {
+                case 'admin':
+                    this.$router.push('/admin/travelers')
+                    break
+                case 'traveller':
+                    this.$router.push('/travelers/view')
+                    break
+                case 'shop':
+                    this.$router.push('/shop')
+                    break
+        }
+    },
 }
 </script>
 

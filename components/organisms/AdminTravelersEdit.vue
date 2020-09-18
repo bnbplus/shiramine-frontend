@@ -7,7 +7,7 @@
             <b-input v-model="formRole"></b-input>
         </b-field>
         <b-field label="BLEタグ">
-            <b-input v-model="formBleUuid"></b-input>
+            <b-input v-model="formBleNumber"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
@@ -23,13 +23,13 @@ export default {
         return {
             formName: null,
             formRole: null,
-            formBleUuid: null
+            formBleNumber: null
         }
     },
     mounted() {
         this.formName = this.name
         this.formRole = this.role
-        this.formBleUuid = this.bleUuid
+        this.formBleNumber = this.bleNumber
     },
     props: {
         id:{
@@ -40,7 +40,7 @@ export default {
             type: String,
             default: '',
         },
-        bleUuid: {
+        formBleNumber: {
             type: String,
             default: ''
         },
@@ -55,7 +55,7 @@ export default {
                 const back = await this.$axios.$post(`/user/edit/${this.id}`, {
                     name: this.formName,
                     role: this.formRole,
-                    bletag: this.formBleUuid
+                    bleNumber: this.formBleNumber
                 }, {
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',

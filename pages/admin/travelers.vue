@@ -16,7 +16,7 @@ export default {
                 { field: 'name', label: '名前' },
                 { field: 'role', label: '種類' },
                 { field: 'email', label: 'メール' },
-                { field: 'bleUuid', label: 'BLEタグ' },
+                { field: 'bleNumber', label: 'BLEタグ' },
             ]
         }
     },
@@ -29,6 +29,7 @@ export default {
                     Authorization: store.state.user.loginToken
                 }
             })
+            console.log(res);
             return {
                 data: res.records
             }
