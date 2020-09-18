@@ -61,28 +61,7 @@ export default {
             mqttClientStatus: 'Disconnected',
             receivedMsgs: [],
             formSolutioner:[],
-            stayShop: [
-                {
-                    "id": 1,
-                    "name": "suzuki",
-                    "email": "suzuki.test@gmail.com",
-                    "role": "admin",
-                    "bleNumber": 24,
-                    "bnbplusSubject": "08dc1e6b-861b-45c5-aa24-813cd650a2f1",
-                    "createdAt": "2020-09-16T20:11:03.000Z",
-                    "updatedAt": "2020-09-16T20:11:03.000Z"
-                },
-                {
-                    "id": 14,
-                    "name": "鈴木大志",
-                    "email": null,
-                    "role": "shop",
-                    "bleNumber": null,
-                    "bnbplusSubject": "d116cc4f-8181-4785-b044-b5a0d9225a05",
-                    "createdAt": "2020-09-18T04:28:02.000Z",
-                    "updatedAt": "2020-09-18T04:28:02.000Z"
-                }
-            ],
+            stayShop: [],
             userRequests: [],
         }
     },
