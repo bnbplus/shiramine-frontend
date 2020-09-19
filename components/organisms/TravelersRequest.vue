@@ -3,7 +3,11 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
+                    <p v-if="!data.length">
+                        おねがいを入力してください
+                    </p>
                     <b-table
+                        v-else
                         :data="data"
                         :debounce-search="1000"
                         :mobile-cards="false"
@@ -48,13 +52,13 @@ export default {
         async requestDelete(deleteId) {
             try {
                 console.log(deleteId);
-                
                 const back = await this.$axios.get(`/request/delete/${deleteId}`, {
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',
                         Authorization: this.$store.state.user.loginToken
                     }
                 })
+                this.data = this.data.filter(x => x.id!==deleteId)
             } catch (err) {
                 console.log(err);
             }

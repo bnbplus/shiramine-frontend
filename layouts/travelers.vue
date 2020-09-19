@@ -17,18 +17,25 @@
                     マイページ
                 </nuxt-link>
                 <nuxt-link
-                :to="`/travelers/edit/${$store.state.user.userId}`"
-                exact-active-class="is-active"
-                tag="b-navbar-item"
-                >
-                    個人情報の変更
-                </nuxt-link>
-                <nuxt-link
                 :to="`/movement`"
                 exact-active-class="is-active"
                 tag="b-navbar-item"
                 >
                     行動履歴
+                </nuxt-link>
+                <nuxt-link
+                :to="`/travelers/onegai`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    みんなのおねがい
+                </nuxt-link>
+                <nuxt-link
+                :to="`/travelers/edit/${$store.state.user.userId}`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    個人情報の変更
                 </nuxt-link>
             </template>
             <template slot="end">

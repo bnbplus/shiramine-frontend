@@ -1,7 +1,7 @@
 <template>
     <section>
         <info-view :title="titleName" :info="name"/>
-        <info-view :title="titleBlenum" :info="blenum"/>
+        <info-view :title="titleBlenum" :info="blenum ? blenum : '未登録'"/>
     </section>
 </template>
 
