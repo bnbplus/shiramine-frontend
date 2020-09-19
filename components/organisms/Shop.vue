@@ -2,6 +2,7 @@
     <div class="container is-10">
         <div class="box">
             <h1 class="title">店舗ページ</h1>
+            <div> {{  }} </div>
         </div>
         <div class="box" v-for="(user, i) in stayShop" :key="i">
             <article class="media">
