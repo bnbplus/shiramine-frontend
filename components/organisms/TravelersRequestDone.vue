@@ -1,6 +1,6 @@
 <template>
     <form @submit.prevent="doneRequest">
-        <b-field label="頼みごとをしてくれた人">
+        <b-field label="おねがいを解決してくれた人">
             <b-select v-model="formSolutioner">
                 <option v-for="(option, i) in data" :value="option.id" :key="i">
                     {{ option.name }}

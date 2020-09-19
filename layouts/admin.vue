@@ -69,7 +69,7 @@ export default {
           to: '/admin/travelers'
         },
         {
-          title: '頼みごと一覧',
+          title: 'おねがい一覧',
           to: '/admin/request'
         },
         {

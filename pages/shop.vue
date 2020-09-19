@@ -10,11 +10,11 @@ import Shop from '~/components/organisms/Shop.vue'
 var myColumns = [
     {
         field: 'request',
-        label: '頼みごと',
+        label: 'おねがい',
     },
     {
         field: 'solutioner',
-        label: '頼みごとをしてくれた人'
+        label: 'おねがいを解決してくれた人'
     }
 ]
 
