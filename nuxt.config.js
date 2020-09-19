@@ -36,6 +36,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics',
   ],
   /*
   ** Nuxt.js modules
@@ -69,6 +70,9 @@ export default {
   },
   axios: {
     baseURL: process.env.API_BASE_URL || 'http://localhost:4000/api',
+  },
+  googleAnalytics: {
+    id: 'UA-178462133-1'
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
