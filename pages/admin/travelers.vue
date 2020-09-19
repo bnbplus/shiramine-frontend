@@ -5,8 +5,10 @@
 <script>
 import AdminTravelersTable from '~/components/organisms/AdminTravelersTable.vue'
 
+
 export default {
     layout:'admin',
+
     data() {
         return {
             columns: [
@@ -14,7 +16,7 @@ export default {
                 { field: 'name', label: '名前' },
                 { field: 'role', label: '種類' },
                 { field: 'email', label: 'メール' },
-                { field: 'bleToken', label: 'BLEトークン' }
+                { field: 'bleNumber', label: 'BLEタグ' },
             ]
         }
     },
@@ -27,6 +29,7 @@ export default {
                     Authorization: store.state.user.loginToken
                 }
             })
+            console.log(res);
             return {
                 data: res.records
             }

@@ -1,14 +1,14 @@
 <template>
-  <admin-place-table :data="data" :columns="columns"> </admin-place-table>
+  <admin-request-table :data="data" :columns="columns" />  
 </template>
 
 <script>
-import AdminPlaceTable from '~/components/organisms/AdminPlaceTable.vue'
+import AdminRequestTable from '~/components/organisms/AdminRequestTable.vue'
 
 export default {
     layout:'admin',
     components:{
-        AdminPlaceTable
+        AdminRequestTable
     },
     data() {
         return {
@@ -18,28 +18,12 @@ export default {
                     label: 'ID',
                 },
                 {
-                    field: 'name',
-                    label: '名前',
+                    field: 'userId',
+                    label: 'ユーザID',
                 },
                 {
-                    field: 'bleNumber',
-                    label: 'BLE UUID',
-                },
-                {
-                    field: 'bnbSub',
-                    label: 'BNB+のsub',
-                },
-                {
-                    field: 'latitude',
-                    label: '緯度',
-                },
-                {
-                    field: 'longitude',
-                    label: '経度',
-                },
-                {
-                    field: 'description',
-                    label: '説明',
+                    field: 'information',
+                    label: '内容',
                 }
             ],
         }
@@ -47,7 +31,7 @@ export default {
     async asyncData({ store, app, redirect }) {
         if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
         try {
-            const res = await app.$axios.$get('/spots', {
+            const res = await app.$axios.$get('/requests', {
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8',
                     Authorization: store.state.user.loginToken

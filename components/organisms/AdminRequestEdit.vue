@@ -1,13 +1,10 @@
 <template>
-    <form @submit.prevent="editUser">
-        <b-field label="名前">
-            <b-input v-model="formName"></b-input>
+    <form @submit.prevent="editRequest">
+        <b-field label="ユーザID">
+            <b-input v-model="formUserId"></b-input>
         </b-field>
-        <b-field label="種類"> 
-            <b-input v-model="formRole"></b-input>
-        </b-field>
-        <b-field label="BLEタグ">
-            <b-input v-model="formBleNumber"></b-input>
+        <b-field label="内容"> 
+            <b-input v-model="formInformation" maxlength="100" type="textarea"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-primary" expanded>
@@ -21,41 +18,34 @@
 export default {
     data() {
         return {
-            formName: null,
-            formRole: null,
-            formBleNumber: null
+            formUserId: null,
+            formInformation: null
         }
     },
     mounted() {
-        this.formName = this.name
-        this.formRole = this.role
-        this.formBleNumber = this.bleNumber
+        this.formUserId = this.userId
+        this.formInformation = this.information
     },
     props: {
         id:{
             type: Number,
             default:''
         },
-        name: {
-            type: String,
+        userId: {
+            type: Number,
             default: '',
         },
-        formBleNumber: {
-            type: String,
-            default: ''
-        },
-        role: {
+        information: {
             type: String,
             default: ''
         }
     },
     methods: {
-        async editUser () {
+        async editRequest () {
             try {
-                const back = await this.$axios.$post(`/user/edit/${this.id}`, {
-                    name: this.formName,
-                    role: this.formRole,
-                    bleNumber: this.formBleNumber
+                const back = await this.$axios.$post(`/request/edit/${this.id}`, {
+                    userId: this.formUserId,
+                    information: this.formInformation
                 }, {
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',

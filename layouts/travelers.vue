@@ -4,33 +4,35 @@
             <template slot="brand">
                 <b-navbar-item tag="router-link" :to="{ path: '/' }">
                     <img
-                        src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-                        alt="Lightweight UI components for Vue.js based on Bulma"
+                        src="@/assets/img/shiramine_logo_type2_grade.png"
                     >
                 </b-navbar-item>
             </template>
             <template slot="start">
-                <b-navbar-item>
-                    <nuxt-link
-                    to="view"
-                    exact-active-class="is-active"
-                    >
-                        My Page
-                    </nuxt-link>
-                </b-navbar-item>
-                <b-navbar-item>
-                    <nuxt-link
-                    to="edit"
-                    exact-active-class="is-active"
-                    >
-                        Edit
-                    </nuxt-link>
-                </b-navbar-item>
+                <nuxt-link
+                to="/travelers/view/"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    マイページ
+                </nuxt-link>
+                <nuxt-link
+                :to="`/travelers/edit/${$store.state.user.userId}`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    個人情報の変更
+                </nuxt-link>
+                <nuxt-link
+                :to="`/movement`"
+                exact-active-class="is-active"
+                tag="b-navbar-item"
+                >
+                    行動履歴
+                </nuxt-link>
             </template>
         </b-navbar>
-        <div class="container column is-10">
-            <nuxt />
-        </div>
+        <nuxt />
     </div>
     
 </template>

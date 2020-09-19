@@ -1,4 +1,5 @@
-
+import TerserPlugin from 'terser-webpack-plugin'
+require('dotenv').config()
 export default {
   mode: 'spa',
   /*
@@ -28,11 +29,13 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~plugins/localStorage', ssr: false },
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Nuxt.js modules
@@ -50,9 +53,28 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.node = { fs: 'empty', tls: 'empty' }
+    },
+    build: {
+      optimization: {
+        minimize: true,
+        minimizer: [
+          new TerserPlugin({
+            cache: true,
+            parallel: false
+          })
+        ]
+      }
     }
   },
   axios: {
-    baseURL: 'http://localhost:4000',
+    baseURL: process.env.API_BASE_URL || 'http://localhost:4000/api',
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    bnbServerUrl: process.env.BNB_SERVER_URL || 'https://op.bnbplus.work',
+    bnbTokenEndpoint: process.env.BNB_TOKEN_ENDPOINT || 'https://op.bnbplus.work/token',
+    bnbClientId: process.env.BNB_CLIENT_ID || 123456789,
+    bnbGrantType: process.env.BNB_GRANT_TYPE || 'authorization_code'
   }
 }

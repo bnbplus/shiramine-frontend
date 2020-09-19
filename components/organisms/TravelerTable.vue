@@ -12,7 +12,6 @@
                         <template slot-scope="p">
                             <b-table-column :field="columns[0].field" :label="columns[0].label">{{ p.row.place }}</b-table-column>
                             <b-table-column :field="columns[1].field" :label="columns[1].label">{{ p.row.time }}</b-table-column>
-                            <b-button tag="router-link" to="/documentation" type="is-link"> Docs </b-button>
                         </template>
 
                         </b-table>

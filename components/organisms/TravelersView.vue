@@ -1,7 +1,7 @@
 <template>
     <section>
         <info-view :title="titleName" :info="name"/>
-        <info-view :title="titleAge" :info="age" />
+        <info-view :title="titleBlenum" :info="blenum"/>
     </section>
 </template>
 
@@ -14,15 +14,15 @@ export default {
             type: String,
             default: '匿名'
         },
-        age: {
+        blenum: {
             type: String,
-            default: '不詳'
-        },
+            default: ' '
+        }
     },
     data() {
         return {
             titleName: '名前',
-            titleAge: '年齢',
+            titleBlenum: 'BLEタグ番号'
         }
     },
     components:{

@@ -1,39 +1,43 @@
 <template>
-  <admin-travelers-edit :name="name" :bleNumber="bleNumber" :role="role" :id="id"/>
+  <div class="container column is-10">
+    <travelers-edit :id="id" :name="name" :blenum="blenum"/>
+  </div>
 </template>
 
 <script>
-import AdminTravelersEdit from '@/components/organisms/AdminTravelersEdit.vue'
+import TravelersEdit from '@/components/organisms/TravelersEdit.vue'
+
 export default {
-    layout:'admin',
+    layout:'travelers',
     components: {
-        AdminTravelersEdit,
+        TravelersEdit,
     },
     async asyncData({store, app, redirect, params}) {
       if ( !store.state.user.loginToken ) { return redirect('/') } // リダイレクト
+
       try {
-        const res = await app.$axios.$get(`/userid/${params.id}`, {
+        const res = await app.$axios.$get(`/user`, {
           headers: {
             'Content-Type': 'application/json;charset=utf-8',
             Authorization: store.state.user.loginToken
           }
         })
-        console.log(res);
+
         return {
           id: res.record.id,
           name: res.record.name,
-          bleNumber: res.record.bleNumber,
-          role: res.record.role
+          blenum: res.record.bleNumber,
         }
       } catch (err) {
         console.log(err)
         return {
-          id: 0,
+          id: '',
           name: '',
-          bleNumber: '',
-          role: ''
+          email: '',
         }
       }
+
+
     }
 }
 </script>

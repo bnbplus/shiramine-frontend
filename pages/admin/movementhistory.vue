@@ -36,6 +36,10 @@ var myColumns = [
     }
 ]
 export default {
+    async asyncData({store, app, redirect, params}) {
+      if ( !store.state.user.loginToken ) { return redirect('/') }
+    },
+
     layout:'admin',
     components:{
         AdminMovementHistoryTable

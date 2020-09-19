@@ -11,8 +11,7 @@
           href="/"
         >
           <img
-            src="~assets/buefy.png"
-            alt="Buefy"
+            src="@/assets/img/shiramine_logo_type1_grade.png"
             height="28"
           >
         </a>
@@ -68,6 +67,10 @@ export default {
         {
           title: '旅人一覧',
           to: '/admin/travelers'
+        },
+        {
+          title: '頼みごと一覧',
+          to: '/admin/request'
         },
         {
           title: '場所一覧',
