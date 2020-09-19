@@ -80,6 +80,14 @@ export default {
   manifest: {
     name: 'おねがいアプリ',
     lang: 'ja',
+    start_url: '/',
+    icons: [
+      {
+        src: 'static/icon.png',
+        sizes: '512x512',
+        type: 'image/png',
+      }
+    ],
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
