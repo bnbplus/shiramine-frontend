@@ -3,8 +3,8 @@
         <b-field label="名前"> 
             <b-input v-model="formName" ></b-input>
         </b-field>
-        <b-field label="メールアドレス">
-            <b-input v-model="formEmail" type="email"></b-input>
+        <b-field label="BLEタグ番号">
+            <b-input v-model="formBlenum"></b-input>
         </b-field>
         <div class="has-text-centered buttons" style="margin-top:20px">
             <b-button native-type="submit" type="is-link" @click="$router.push(`/travelers/view`)" expanded>
@@ -25,7 +25,7 @@ export default {
             type: String,
             requiered: true
         },
-        email:{
+        blenum:{
             type: String,
             requiered: true
         }
@@ -33,19 +33,19 @@ export default {
     data() {
         return {
             formName: null,
-            formEmail: null,
+            formBlenum: null,
         }
     },
     mounted() {
         this.formName = this.name
-        this.formEmail = this.email
+        this.formBlenum = this.blenum
     },
     methods: {
         async editUser() {
             try {
                 const back = await this.$axios.$post(`/user/edit/${this.id}`, {
                         name: this.formName,
-                        email: this.formEmail
+                        bleNumber: this.formBlenum
                     }, {
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8',

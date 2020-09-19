@@ -1,6 +1,6 @@
 <template>
   <div class="container column is-10">
-    <travelers-edit :id="id" :name="name" :email="email" />
+    <travelers-edit :id="id" :name="name" :blenum="blenum"/>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
         return {
           id: res.record.id,
           name: res.record.name,
-          email: res.record.email
+          blenum: res.record.bleNumber,
         }
       } catch (err) {
         console.log(err)
