@@ -20,9 +20,8 @@ export default {
   layout:'travelers',
   data(){
       return{
-          titleInfo:"頼みごとの内容"
+          titleInfo:"おねがいの内容"
       }
-    
   },
 
   components: {

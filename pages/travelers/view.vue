@@ -27,7 +27,7 @@ export default {
             requestColumns: [
                 {
                     field: 'information',
-                    label: '頼みごと',
+                    label: 'おねがい',
                 },
             ]
 

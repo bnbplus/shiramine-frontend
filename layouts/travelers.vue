@@ -31,6 +31,11 @@
                     行動履歴
                 </nuxt-link>
             </template>
+            <template slot="end">
+                <b-navbar-item @click="logout()">
+                    ログアウト
+                </b-navbar-item>
+            </template>
         </b-navbar>
         <nuxt />
     </div>
@@ -39,7 +44,14 @@
 
 <script>
 export default {
-  
+    methods: {
+        logout() {
+            this.$store.commit('user/setLoginToken', null)
+            this.$store.commit('user/setUserRole', null)
+            this.$store.commit('user/serUserId', null)
+            this.$router.push('/')
+        }
+    }
 }
 
 </script>
